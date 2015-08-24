@@ -1,0 +1,78 @@
+li.customize-control{
+  position: relative;
+}
+li.customize-control hr{
+    margin: 0 -20px 10px;
+}
+.accordion-sub-container li:last-child:before{
+  display: none;
+}
+.accordion-sub-container li:last-child{
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+li.customize-control a.tooltip.hint--left{
+  right: -10px !important;
+}
+.control-section-themes .accordion-section-title{
+  margin: 0;
+}
+li[id*='group_title'] .tooltip{
+    margin-top: 10px;
+}
+.group_title {
+    text-transform: capitalize;
+    background: #f7f7f7;
+    margin: 10px -20px;
+    padding: 5px 20px;
+    font-weight: bold;
+    border-bottom: 1px solid #dedede;
+    border-top: 1px solid #dedede;
+}
+.customize-control-title {
+    text-transform: capitalize;
+}
+.customize-control-title .description {
+    font-weight: 400;
+    text-transform: none;
+    margin-bottom: 10px;
+}
+.customize-control-radio-image .image.ui-buttonset label {
+    height: auto;
+    line-height: 0;
+    padding: 2px;
+    box-shadow: none;
+    background-color: #f5f5f5;
+}
+.customize-control-radio-image .image.ui-buttonset label.ui-state-active {
+    border-width: 3px;
+    padding: 0;
+}
+.customize-control-slider .ui-slider{
+    margin-left: 30px;
+}
+.customize-control-slider input[type="text"]{
+    display: block;
+    width: 20px;
+    margin-bottom: -23px !important;
+}
+.customize-control select{
+    margin-bottom: 16px;
+}
+.select2-container{
+    width: 100% !important;
+    display: block;
+    margin-bottom: 10px !important;
+}
+#customize-control-favicon_image img {
+    width: auto;
+}
+#customize-control-favicon_image .current {
+    text-align: center;
+}
+#customize-control-favicon_image .container {
+    display: inline-block;
+    padding: 5px;
+    min-height: 0;
+}
+#customize-control-io{display: none !important;}

@@ -1,0 +1,131 @@
+@import (reference) "_elements";
+
+/*--------------------------------------------------------------
+Header
+--------------------------------------------------------------*/
+
+.header {
+  text-align: center;
+  position: relative;
+  border-bottom: 1px solid #eee;
+  .middle-sm {
+    &:before, &:after {
+      display: none !important;
+    }
+  }
+}
+
+.site-branding {
+  text-align: center;
+  padding: 30px 0;
+}
+
+.search-box {
+  display: table;
+  margin: 0 auto;
+  .search-form {
+    display: table-cell;
+    vertical-align: middle;
+    width: 85%;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      .transit;
+    }
+    &.active {
+      &:after {
+        width: 100%;
+      }
+    }
+  }
+  .search-submit {
+    display: none;
+  }
+  .search-field {
+    font-size: 12px;
+    border: none;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    border-radius: 0;
+    padding: 0;
+    .placeholder(#fff);
+    .transit;
+    &:-webkit-autofill {
+      -webkit-box-shadow:0 0 0 50px white inset;
+    }
+  }
+  .fa-search {
+    display: table-cell;
+    vertical-align: bottom;
+    font-size: 15px;
+    width: 15%;
+    text-align: right;
+  }
+}
+
+////////////Max width 768px//////////////
+@media @xs-max {
+  .header {
+    .social {
+      margin-bottom: 20px;
+    }
+
+    .search-box {
+      width: 80%;
+      margin-bottom: 60px;
+    }
+  }
+}
+
+///////////////768px//////////////////
+@media @sm {
+  .header {
+    text-align: left;
+    .social {
+      text-align: right;
+    }
+  }
+}
+
+///////////////992px//////////////////
+@media @md {
+  .site-branding {
+    padding: 60px 0;
+  }
+}
+
+////////////Max width 1199px//////////////
+@media @md-max {
+  .header {
+    padding-bottom: 30px;
+  }
+}
+
+///////////////1200px//////////////////
+@media @lg {
+  .header {
+    .middle-sm {
+      position: relative;
+    }
+  }
+
+  // sticky header
+  .headroom--not-top {
+    box-shadow: 0px 1px 4px rgba(190, 190, 190, 0.46);
+    border: none;
+    position: fixed !important;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    .transit;
+    .site-branding {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,109 @@
+<?php
+/**
+ * The header for our theme.
+ *
+ * Displays all of the <head> section and everything up till <div id="content">
+ *
+ *  @package ThemeMove
+ */
+
+?><!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+<meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+<link rel="shortcut icon" href="<?php echo get_theme_mod('favicon_image',favicon_image); ?>">
+<link rel="apple-touch-icon" href="<?php echo get_theme_mod('apple_touch_icon',apple_touch_icon); ?>"/>
+
+<?php wp_head(); ?>
+</head>
+
+<body <?php body_class(); ?>>
+<div id="page" class="hfeed site animsition">
+  <div class="header-wrapper">
+    <header <?php header_class(); ?>>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="site-branding">
+            <?php
+            global $infinity_custom_logo;
+            if($infinity_custom_logo){ ?>
+              <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                <img src="<?php echo esc_url($infinity_custom_logo); ?>" alt="logo"/>
+              </a>
+            <?php }else{ ?>
+              <?php if(get_theme_mod( 'logo_image', logo_image)){ ?>
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+                  <img src="<?php echo get_theme_mod('logo_image',logo_image); ?>" alt="logo"/>
+                </a>
+              <?php }else{ ?>
+                <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+              <?php } ?>
+            <?php } ?>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class="row middle-sm">
+            <div class="last-sm first-lg col-sm-3 col-lg-8">
+              <button class="menu-link"><span class="lines"></span></button>
+                <?php
+                if ( class_exists( 'TM_Walker_Nav_Menu' ) && has_nav_menu( 'primary' ) ) {
+                  ?>
+              <nav class="nav">
+                <?php
+                  wp_nav_menu(
+                    array (
+                      'theme_location' => 'primary',
+                      'after'          => '<i class="sub-menu-toggle fa fa-angle-down"></i>',
+                      'walker'         => new TM_Walker_Nav_Menu()
+                    )
+                  );
+                ?>
+              </nav><!-- .site-navigation -->
+
+              <?php
+                } else {
+              ?>
+              <div id="navbar" class="navbar">
+                <nav id="site-navigation" class="navigation main-navigation" role="navigation">
+                  <button class="menu-toggle"><?php _e( 'Menu', 'thememove' ); ?></button>
+                  <a class="screen-reader-text skip-link" href="#content" title="<?php esc_attr_e( 'Skip to content', 'thememove' ); ?>"><?php _e( 'Skip to content', 'thememove' ); ?></a>
+              <?php
+                  wp_nav_menu( array( 'theme_location' => 'primary',
+                                      'menu_class' => 'nav-menu',
+                                      'menu_id' => 'primary-menu' ) ); ?>
+                </nav><!-- #site-navigation -->
+              </div><!-- #navbar -->
+              <?php  }
+                ?>
+            </div>
+            <div class="col-sm-6 col-lg-2">
+              <div class="social">
+                <?php
+                if ( has_nav_menu( 'social' ) ) {
+                  wp_nav_menu(
+                    array(
+                      'theme_location' => 'social',
+                      'fallback_cb' => false
+                    )
+                  );
+                } ?>
+              </div>
+            </div>
+            <?php if(Kirki::get_option( 'infinity', 'header_search_enable')) { ?>
+              <div class="col-sm-3 col-lg-2">
+                <div class="search-box">
+                  <?php get_search_form(); ?>
+                  <i class="fa fa-search"></i>
+                </div>
+              </div>
+            <?php } ?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  </div><!-- .header-wrapper -->

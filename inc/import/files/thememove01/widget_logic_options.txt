@@ -1,0 +1,14 @@
+[START=WIDGET LOGIC OPTIONS]
+text-2	""
+text-3	""
+tm_twitter-2	""
+text-4	""
+tm_instagram-2	""
+categories-2	""
+text-5	""
+archives-2	""
+tag_cloud-2	""
+text-6	""
+text-8	""
+tm_facebook-2	""
+[STOP=WIDGET LOGIC OPTIONS]

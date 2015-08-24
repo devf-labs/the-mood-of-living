@@ -1,0 +1,35 @@
+@import (reference) "_elements";
+
+/*--------------------------------------------------------------
+Typography
+--------------------------------------------------------------*/
+.widget-title, .widgettitle {
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-transform: uppercase;
+  display: table;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 35px;
+  &:before, &:after {
+    border-top: 1px solid transparent;
+    content: '';
+    display: table-cell;
+    position: relative;
+    top: 50%;
+    width: 40%;
+    .translate(0, 50%);
+  }
+  &:before { right: 15px; }
+  &:after { left: 15px; }
+}
+
+.heading-title {
+  .widget-title;
+  width: 100%;
+  &:before, &:after {
+    width: 45%;
+  }
+}
