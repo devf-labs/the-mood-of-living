@@ -59,9 +59,8 @@ section,
 summary {
   display: block;
 }
-header{
+.header{
   position: fixed;
-  width:100%;
 }
 audio,
 canvas,
