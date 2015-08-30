@@ -59,6 +59,10 @@ section,
 summary {
   display: block;
 }
+header{
+  position: fixed;
+  width:100%;
+}
 audio,
 canvas,
 progress,
