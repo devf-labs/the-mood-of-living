@@ -1,145 +1,71 @@
 <?php
 /**
- * Template part for displaying single posts.
+ * The template for displaying content in the single.php template
  *
- *  @package ThemeMove
+ * @package WordPress
+ * @subpackage Razzo
+ * @since Razzo 1.0
  */
-$infinity_hide_category       =  Kirki::get_option( 'infinity', 'post_general_hide_category' );
-$infinity_hide_date       =  Kirki::get_option( 'infinity', 'post_general_hide_date' );
-$infinity_hide_share_buttons     =  Kirki::get_option( 'infinity', 'post_general_hide_share_buttons' );
-$infinity_hide_featured_image     =  Kirki::get_option( 'infinity', 'post_general_hide_featured_image' );
-$infinity_hide_comment_link     =  Kirki::get_option( 'infinity', 'post_general_hide_comment_link' );
 ?>
 
-<article <?php post_class(); ?>>
-  <?php if(has_post_format('gallery')) { ?>
-    <?php $gallery_images = get_post_meta( get_the_ID(), '_format_gallery_images', true ); ?>
-    <?php $gallery_type = get_post_meta( get_the_ID(), '_format_gallery_type', true ); ?>
-    <?php if($gallery_images) { ?>
-      <div class="post-img post-gallery<?php echo ' ' . esc_attr($gallery_type); ?>">
-        <?php if ('masonry' == $gallery_type) { ?><div class="grid-thumb-sizer"></div><?php } ?>
-        <?php foreach($gallery_images as $image) { ?>
-          <?php if ('masonry' == $gallery_type) {
-            $img = wp_get_attachment_image_src($image, 'full-thumb');
-          } else {
-            $img = wp_get_attachment_image_src($image, 'single-thumb');
-          } ?>
-          <?php $caption  = get_post_field('post_excerpt', $image); ?>
-          <div <?php if('masonry' == $gallery_type) { ?> class="thumb-masonry-item" <?php } ?>><img src="<?php echo esc_url($img[0]); ?>" alt="<?php echo ''; ?>"></div>
-        <?php } ?>
-      </div>
-    <?php } ?>
-  <?php } elseif(has_post_format('video')) { ?>
-    <div class="post-video">
-      <?php $video = get_post_meta( get_the_ID(), '_format_video_embed' , true ); ?>
-      <?php if(wp_oembed_get($video)) { ?>
-        <?php echo wp_oembed_get($video); ?>
-      <?php } else { ?>
-        <?php echo $video; ?>
-      <?php } ?>
-    </div>
-  <?php } elseif(has_post_format('audio')) { ?>
-    <div class="post-audio">
-      <?php $audio = get_post_meta( $post->ID, '_format_audio_embed', true ); ?>
-      <?php if(wp_oembed_get( $audio )) { ?>
-        <?php echo wp_oembed_get($audio); ?>
-      <?php } else { ?>
-        <?php echo $audio; ?>
-      <?php } ?>
-    </div>
-  <?php } elseif(has_post_format('quote')) { ?>
-    <?php $source_name = get_post_meta( $post->ID, '_format_quote_source_name', true ); ?>
-    <?php $url = get_post_meta( $post->ID, '_format_quote_source_url', true ); ?>
-    <?php $quote = get_post_meta( $post->ID, '_format_quote_text', true ); ?>
-    <?php if($quote) { ?>
-      <div class="post-quote">
-        <h2><?php echo esc_attr($quote); ?></h2>
-        <div class="source-name">
-          <?php if($source_name) { ?>
-            <?php if($url) { ?>
-              <a href="<?php echo esc_url($url); ?>" target="_blank"><?php echo esc_attr($source_name); ?></a>
-            <?php } else { ?>
-              <span><?php echo esc_attr($source_name); ?></span>
-            <?php } ?>
-          <?php } ?>
-        </div>
-      </div>
-    <?php } ?>
-  <?php } else { ?>
-    <?php if(has_post_thumbnail() && !$infinity_hide_featured_image) { ?>
-      <div class="post-img">
-        <a href="<?php echo get_permalink(); ?>"><?php the_post_thumbnail('single-thumb');?></a>
-      </div>
-    <?php }  ?>
-  <?php } ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<header class="entry-header">
+		<h1 class="entry-title"><?php the_title(); ?></h1>
 
-  <div class="entry-header">
-
-    <?php if(!$infinity_hide_category) { ?>
-      <div class="post-categories">
-        <?php infinity_entry_categories(); ?>
-      </div><!--post-categories-->
-    <?php } ?>
-
-		<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
-
-    <?php if(!$infinity_hide_date) { ?>
-      <div class="post-date">
-        <?php infinity_posted_on(); ?>
-      </div><!--post-date-->
-    <?php } ?>
-
-	</div><!-- .entry-header -->
+		<?php if ( 'post' == get_post_type() ) : ?>
+		<div class="entry-meta">
+			<?php mega_posted_on(); ?>
+		</div><!-- .entry-meta -->
+		<?php endif; ?>
+	</header><!-- .entry-header -->
 
 	<div class="entry-content">
 		<?php the_content(); ?>
-		<?php
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'infinity' ),
-				'after'  => '</div>',
-			) );
-		?>
+		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:', 'mega' ) . '</span>', 'after' => '</div>' ) ); ?>
 	</div><!-- .entry-content -->
 
-	<div class="entry-footer">
-    <div class="post-tags">
-      <?php infinity_entry_tags(); ?>
-    </div><!--post-tags-->
-    <div class="post-meta">
-      <div class="row">
-        <?php if($infinity_hide_comment_link || $infinity_hide_share_buttons) {
-          $class = 'col-xs-12';
-        } else {
-          $class = 'col-xs-12 col-sm-6';
-        } ?>
-        <?php if(!$infinity_hide_comment_link) { ?>
-          <div class="post-comments <?php echo esc_attr($class); ?>">
-            <?php infinity_entry_comments(); ?>
-          </div><!--post-date-->
-        <?php } ?>
-        <?php if (!$infinity_hide_share_buttons) { ?>
-          <div class="post-share-buttons <?php echo esc_attr($class); ?>">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>"
-               onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=455,width=600'); return false;">
-              <i class="fa fa-facebook"></i>
-            </a>
-            <a href="https://twitter.com/home?status=Check%20out%20this%20article:%20<?php echo rawurlencode(the_title('', '', false)); ?>%20-%20<?php the_permalink(); ?>"
-               onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=455,width=600'); return false;">
-              <i class="fa fa-twitter"></i>
-            </a>
-            <?php $pin_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID)); ?>
-            <a data-pin-do="skipLink" href="https://pinterest.com/pin/create/button/?url=<?php the_permalink(); ?>&amp;media=<?php echo esc_url($pin_image); ?>&amp;description=<?php echo rawurlencode(the_title('', '', false)); ?>"
-               onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=455,width=600'); return false;">
-              <i class="fa fa-pinterest"></i>
-            </a>
-            <a href="https://plus.google.com/share?url=<?php the_permalink(); ?>"
-               onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=no,scrollbars=no,height=455,width=600'); return false;">
-              <i class="fa fa-google-plus"></i>
-            </a>
-            <a href="mailto:<?php echo get_option( 'admin_email' ); ?>"><i class="fa fa-envelope-o"></i></a>
-          </div>
-        <?php } ?>
-      </div>
-    </div>
-	</div><!-- .entry-footer -->
-</article><!-- #post-## -->
+	<footer class="entry-meta">
+		<?php
+			/* translators: used between list items, there is a space after the comma */
+			$categories_list = get_the_category_list( __( ', ', 'mega' ) );
+
+			/* translators: used between list items, there is a space after the comma */
+			$tag_list = get_the_tag_list( '', __( ', ', 'mega' ) );
+			if ( '' != $tag_list ) {
+				$utility_text = __( 'This entry was posted in %1$s and tagged %2$s by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'mega' );
+			} elseif ( '' != $categories_list ) {
+				$utility_text = __( 'This entry was posted in %1$s by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'mega' );
+			} else {
+				$utility_text = __( 'This entry was posted by <a href="%6$s">%5$s</a>. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.', 'mega' );
+			}
+
+			printf(
+				$utility_text,
+				$categories_list,
+				$tag_list,
+				esc_url( get_permalink() ),
+				the_title_attribute( 'echo=0' ),
+				get_the_author(),
+				esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) )
+			);
+		?>
+		<?php edit_post_link( __( 'Edit', 'mega' ), '<span class="edit-link">', '</span>' ); ?>
+
+		<?php if ( get_the_author_meta( 'description' ) && ( ! function_exists( 'is_multi_author' ) || is_multi_author() ) ) : // If a user has filled out their description and this is a multi-author blog, show a bio on their entries ?>
+		<div id="author-info">
+			<div id="author-avatar">
+				<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'mega_author_bio_avatar_size', 68 ) ); ?>
+			</div><!-- #author-avatar -->
+			<div id="author-description">
+				<h2><?php printf( __( 'About %s', 'mega' ), get_the_author() ); ?></h2>
+				<?php the_author_meta( 'description' ); ?>
+				<div id="author-link">
+					<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
+						<?php printf( __( 'View all posts by %s <span class="meta-nav">&rarr;</span>', 'mega' ), get_the_author() ); ?>
+					</a>
+				</div><!-- #author-link	-->
+			</div><!-- #author-description -->
+		</div><!-- #entry-author-info -->
+		<?php endif; ?>
+	</footer><!-- .entry-meta -->
+</article><!-- #post-<?php the_ID(); ?> -->
