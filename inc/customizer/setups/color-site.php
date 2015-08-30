@@ -196,28 +196,28 @@ Kirki::add_field('', array(
 ));
 
 // Heading text
-Kirki::add_field('infinity', array(
-  'type'      => 'color',
-  'setting'   => 'site_color_heading',
-  'label'       => __('Heading text', 'infinity'),
-  'section'   => $section,
-  'priority'  => $priority++,
-  'default'   => $color_scheme[4],
-  'transport' => 'postMessage',
-  'output'    => array(
-    array(
-      'element'  => 'h1, h2, h3, h4, h5, h6',
-      'property' => 'color',
-    ),
-  ),
-  'js_vars'   => array(
-    array(
-      'element'  => 'h1, h2, h3, h4, h5, h6',
-      'function' => 'css',
-      'property' => 'color',
-    ),
-  )
-));
+// Kirki::add_field('infinity', array(
+//   'type'      => 'color',
+//   'setting'   => 'site_color_heading',
+//   'label'       => __('Heading text', 'infinity'),
+//   'section'   => $section,
+//   'priority'  => $priority++,
+//   'default'   => $color_scheme[4],
+//   'transport' => 'postMessage',
+//   'output'    => array(
+//     array(
+//       'element'  => 'h1, h2, h3, h4, h5, h6',
+//       'property' => 'color',
+//     ),
+//   ),
+//   'js_vars'   => array(
+//     array(
+//       'element'  => 'h1, h2, h3, h4, h5, h6',
+//       'function' => 'css',
+//       'property' => 'color',
+//     ),
+//   )
+// ));
 
 //--------------------
 Kirki::add_field('', array(
