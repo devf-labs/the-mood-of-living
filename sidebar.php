@@ -11,7 +11,7 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 ?>
 
 <div class="col-md-3">
-  <aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+  <aside class="sidebar space-content" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
     <?php dynamic_sidebar( 'sidebar-1' ); ?>
   </aside>
 </div>

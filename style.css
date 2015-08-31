@@ -696,3 +696,8 @@ object {
   display: block;
     margin-top: 1em;
 }
+
+/* Classes for The Mood of Living */
+.space-content{
+  margin-top: 120px;
+}

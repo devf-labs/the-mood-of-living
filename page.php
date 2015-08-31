@@ -27,7 +27,7 @@ if ('default' != $infinity_page_layout) {
 get_header(); ?>
 
 <div class="content-wrapper">
-  <div class="container">
+  <div class="container space-content">
     <div class="row">
       <?php if('sidebar-content' == $layout){ ?>
         <?php get_sidebar(); ?>
