@@ -1725,6 +1725,9 @@ Header
   text-align: center;
   position: relative;
   border-bottom: 1px solid #eee;
+  z-index: 99;
+  position: fixed;
+  width: 100%;
 }
 .header .middle-sm:before,
 .header .middle-sm:after {
@@ -1805,11 +1808,11 @@ Header
     text-align: right;
   }
 }
-@media only screen and (min-width: 992px) {
+/*@media only screen and (min-width: 992px) {
   .site-branding {
     padding: 60px 0;
   }
-}
+}*/
 @media (max-width: 1199px) {
   .header {
     padding-bottom: 30px;
