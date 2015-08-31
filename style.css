@@ -431,6 +431,7 @@ a:active {
     border-bottom: 1px solid #eee;
     text-align: center;
     margin-left: -50px;
+    background-color: #fff;
 }
 .main-navigation ul ul a {
   font-size: 14px;
