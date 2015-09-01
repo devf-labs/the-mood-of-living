@@ -429,11 +429,14 @@ a:active {
     margin: 0;
     padding: 10px 20px;
     border-bottom: 1px solid #eee;
+    text-align: center;
+    margin-left: -50px;
+    background-color: #fff;
 }
 .main-navigation ul ul a {
   font-size: 14px;
   text-transform: none;
-  width: 250px;
+  width: 100px;
   padding: 0;
 }
 .main-navigation ul li:hover > ul,
@@ -694,8 +697,6 @@ object {
   display: block;
     margin-top: 1em;
 }
-
-
 
 /** RAZZO**/
 
@@ -9698,4 +9699,9 @@ div[itemprop="description"] p a {
     text-transform: uppercase;
     padding-bottom: 0;
     font-family: 'AvenirBlack',Myriad Pro,sans-serif,Helvetica;
+}
+
+/* Classes for The Mood of Living */
+.space-content{
+  margin-top: 120px;
 }

@@ -14,8 +14,8 @@
 $layout = Kirki::get_option( 'infinity', 'site_layout' );
 
 get_header(); ?>
-<div class="content-wrapper">
-	<div class="container">
+<div class="content-wrapper ">
+	<div class="container space-content">
     <div class="row">
       <?php if('sidebar-content' == $layout){ ?>
         <?php get_sidebar(); ?>
