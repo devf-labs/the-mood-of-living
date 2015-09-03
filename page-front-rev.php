@@ -20,6 +20,10 @@ get_header(); ?>
 							
 				</div><!-- #block-rev-slider -->
 
+				<div class="latest-stories margin-40 clearfix">
+					<div class="before"></div>
+					<h4>Mood of Living: A quality of Lifestyle Magazine and Global Marketplace</h4>
+				</div>
 				
 				<?php $enable_home_banners_shop = ot_get_option( 'enable_home_banners_shop' ); ?>
 				<?php if ( ! empty( $enable_home_banners_shop ) ) { ?>
@@ -70,10 +74,12 @@ get_header(); ?>
 				<?php } // End if ( ! empty( $enable_home_slider_shop ) ) ?>
 				
 				
-				<div id="home-portfolio-wrapper" class="clearfix su-column su-column-size-2-3">
+				<div id="home-portfolio-wrapper" class="clearfix row">
 						
 						
-						<div id="home-portfolio" class="clearfix row">
+						<div id="home-portfolio" class="col-sm-8">
+							<div class="row">
+								
 						<?php
 							$home_portfolios_per_page = ot_get_option( 'home_portfolios_per_page' );
 
@@ -114,14 +120,16 @@ get_header(); ?>
 														
 							<?php wp_reset_query(); ?>
 							
+							</div>
 						</div><!-- #home-portfolio -->
+						<?php  if ( !empty( $post->post_content ) ) : ?>
+							<div class="home-content col-md-4">
+								<?php the_content(); ?>
+							</div>
+						<?php endif; ?>
 					</div><!-- #home-portfolio-wrapper -->
 					
-					<?php  if ( !empty( $post->post_content ) ) : ?>
-						<div class="home-content su-column su-column-size-1-3">
-							<?php the_content(); ?>
-						</div>
-					<?php endif; ?>
+
 					
 			</div><!-- #content -->
 		</div><!-- #primary -->
