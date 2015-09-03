@@ -21,68 +21,67 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="hfeed site animsition">
-  <div class="header-wrapper">
-    <header <?php header_class(); ?>>
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-3">
-          <div class="site-branding">
-            <?php
-            global $infinity_custom_logo;
-            if($infinity_custom_logo){ ?>
+<div class="header-wrapper">
+  <header <?php header_class(); ?>>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-xs-12">
+        <div class="site-branding">
+          <?php
+          global $infinity_custom_logo;
+          if($infinity_custom_logo){ ?>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+              <img src="<?php echo esc_url($infinity_custom_logo); ?>" alt="logo"/>
+            </a>
+          <?php }else{ ?>
+            <?php if(get_theme_mod( 'logo_image', logo_image)){ ?>
               <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-                <img src="<?php echo esc_url($infinity_custom_logo); ?>" alt="logo"/>
+                <img src="<?php echo get_theme_mod('logo_image',logo_image); ?>" alt="logo"/>
               </a>
             <?php }else{ ?>
-              <?php if(get_theme_mod( 'logo_image', logo_image)){ ?>
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-                  <img src="<?php echo get_theme_mod('logo_image',logo_image); ?>" alt="logo"/>
-                </a>
-              <?php }else{ ?>
-                <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-              <?php } ?>
+              <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
             <?php } ?>
-          </div>
+          <?php } ?>
         </div>
-        <div class="col-xs-9">
-          <div class="row middle-sm site-branding">
-            <div class="last-sm first-lg col-sm-3 col-lg-12">
-              <button class="menu-link"><span class="lines"></span></button>
-                <?php
-                if ( class_exists( 'TM_Walker_Nav_Menu' ) && has_nav_menu( 'primary' ) ) {
-                  ?>
-              <nav class="nav">
-                <?php
-                  wp_nav_menu(
-                    array (
-                      'theme_location' => 'primary',
-                      'after'          => '<i class="sub-menu-toggle fa fa-angle-down"></i>',
-                      'walker'         => new TM_Walker_Nav_Menu()
-                    )
-                  );
-                ?>
-              </nav><!-- .site-navigation -->
-
+      </div>
+      <div class="col-xs-9">
+        <div class="row middle-sm site-branding">
+          <div class="last-sm first-lg col-sm-3 col-lg-12">
+            <button class="menu-link"><span class="lines"></span></button>
               <?php
-                } else {
+              if ( class_exists( 'TM_Walker_Nav_Menu' ) && has_nav_menu( 'primary' ) ) {
+                ?>
+            <nav class="nav">
+              <?php
+                wp_nav_menu(
+                  array(
+                    'theme_location' => 'primary',
+                    'after'          => '<i class="sub-menu-toggle fa fa-angle-down"></i>',
+                    'walker'         => new TM_Walker_Nav_Menu()
+                  )
+                );
               ?>
-              <div id="navbar" class="navbar">
-                <nav id="site-navigation" class="navigation main-navigation" role="navigation">
-                  <button class="menu-toggle"><?php _e( 'Menu', 'thememove' ); ?></button>
-                  <a class="screen-reader-text skip-link" href="#content" title="<?php esc_attr_e( 'Skip to content', 'thememove' ); ?>"><?php _e( 'Skip to content', 'thememove' ); ?></a>
-              <?php
-                  wp_nav_menu( array( 'theme_location' => 'primary',
-                                      'menu_class' => 'nav-menu',
-                                      'menu_id' => 'primary-menu' ) ); ?>
-                </nav><!-- #site-navigation -->
+            </nav><!-- .site-navigation -->
+
+            <?php
+              } else {
+            ?>
+            <div id="navbar" class="navbar">
+              <nav id="site-navigation" class="nav" role="navigation">
+            <?php
+                wp_nav_menu( array( 'theme_location' => 'primary',
+                                    'menu_class' => 'menu',
+                                    'menu_id' => 'primary-menu' ) ); ?>
+              </nav><!-- #site-navigation -->
               </div><!-- #navbar -->
-              <?php  }
-                ?>
-            </div>
+            <?php  }
+              ?>
           </div>
         </div>
       </div>
     </div>
-  </header>
-  </div><!-- .header-wrapper -->
+  </div>
+</header>
+</div><!-- .header-wrapper -->
+<div id="page" class="hfeed site animsition">
+
