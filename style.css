@@ -4322,19 +4322,23 @@ a:hover .portfolio-view-wrapper {
 }
 
 .latest-stories h4 {
-    margin: -7px auto;
-    background: #fff;
-    font-size: 12px;
-    font-weight: bold;
-    /*width: 120px;*/
-    text-align: center;
-    margin: 0 auto;
-    display: table;
-    position: relative;
-    padding: 0 5px;
+  margin: -7px auto;
+  background: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  width: 120px;
+  text-align: center;
 }
 
-.latest-stories:before{
+.latest-stories.margin-40 h4{
+  width: auto;
+  display: table;
+  position: relative;
+  padding: 0 5px;
+  margin: 0 auto;
+}
+
+.latest-stories.margin-40:before{
     background: none repeat scroll 0 0 #CCC;
     content: " ";
     display: block;
