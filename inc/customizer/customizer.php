@@ -381,7 +381,7 @@ function infinity_customizer_sections( $wp_customize ) {
   $wp_customize->remove_control('page_for_posts');
   //$wp_customize->remove_control( 'nav_menu_locations[primary]' );
   //$wp_customize->remove_control( 'nav_menu_locations[footer]' );
-  $wp_customize->get_section('io_section')->priority = '40';
+  // $wp_customize->get_section('io_section')->priority = '40';
 
 //  $wp_customize->remove_control( 'blogname' );
 //  $wp_customize->remove_control( 'blogdescription' );
