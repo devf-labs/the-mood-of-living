@@ -15,7 +15,7 @@ $layout = Kirki::get_option( 'infinity', 'site_layout' );
 
 get_header(); ?>
 <div class="content-wrapper ">
-	<div class="container space-content">
+	<div class="container">
     <div class="row">
       <?php if('sidebar-content' == $layout){ ?>
         <?php get_sidebar(); ?>
@@ -26,7 +26,7 @@ get_header(); ?>
         <?php $class = 'col-md-12'; ?>
       <?php } ?>
       <div class="<?php echo esc_attr($class); ?>">
-        <main id="main" class="content site-main" role="main">
+        <main id="main" class="content site-main space-content" role="main">
           <?php if ( have_posts() ) : ?>
 
             <?php /* Start the Loop */ ?>
