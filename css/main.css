@@ -2015,11 +2015,9 @@ Navigation
     width: 100%;
     right: 0;
   }
-  #content {
-    margin-top: 140px;
-  }
-  .space-content{
-    margin-top: 140px;
+
+  #page {
+    padding: 80px !important;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 992px) {
