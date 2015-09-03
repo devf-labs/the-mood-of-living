@@ -1728,6 +1728,7 @@ Header
   z-index: 99;
   position: fixed;
   width: 100%;
+  padding: 0px 60px;
 }
 .header .middle-sm:before,
 .header .middle-sm:after {
@@ -1998,6 +1999,7 @@ Navigation
     border-bottom: 1px solid #eee;
     padding: 15px 0;
   }
+
 }
 @media (max-width: 768px) {
   .menu-link {
@@ -2012,6 +2014,12 @@ Navigation
   .nav {
     width: 100%;
     right: 0;
+  }
+  #content {
+    margin-top: 140px;
+  }
+  .space-content{
+    margin-top: 140px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 992px) {
