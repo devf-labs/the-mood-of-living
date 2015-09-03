@@ -1,3 +1,4 @@
+
 <?php
 /**
  * The Sidebar containing the main widget area.
@@ -28,3 +29,4 @@
 				
 			<?php endif; // end if ( is_page() ) ?>
 		</div><!-- #secondary .widget-area -->
+
