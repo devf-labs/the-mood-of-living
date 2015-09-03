@@ -1254,10 +1254,7 @@ body {
     margin: 0;
     border: none;
 }
-#secondary {
-    margin: 0;
-    padding: 30px 0 30px 30px;
-}
+
 /* Attachments */
 
 .singular .image-attachment .entry-content {
@@ -1329,11 +1326,11 @@ body.blog h1.entry-title {
     border-right: 1px solid #cfcfcf;
     padding: 30px 0 0;
 }
-.archive #secondary,
+/*.archive #secondary,
 .search #secondary,
 .blog #secondary {
     padding: 30px 0 30px 30px;
-}
+}*/
 .archive .hentry,
 .search .hentry,
 .blog .hentry {
@@ -1417,9 +1414,9 @@ footer.entry-meta [data-icon]:before {
 .page-template-default #content {
     padding: 0 30px 0 0;
 }
-.page-template-default #secondary {
+/*.page-template-default #secondary {
     padding: 30px 0 30px 30px;
-}
+}*/
 /* Full Width */
 
 .page-template-page-full-width-php .entry-header {
@@ -1427,7 +1424,7 @@ footer.entry-meta [data-icon]:before {
 }
 .page-template-page-full-width-php #main #primary,
 .page-template-page-full-width-php .left-sidebar #main #primary {
-    max-width: 960px;
+    /*max-width: 960px;*/
     padding: 0 0 30px;
 }
 .page-template-page-full-width-php .entry-title {
@@ -9555,9 +9552,9 @@ p.demo_store {
     margin: 0px !important;
     text-align: center !important;
 }
-.single-product #secondary {
+/*.single-product #secondary {
     padding: 30px 0 40px 0;
-}
+}*/
 .single-product .entry-title {
     font-weight: normal;
     font-size: 22px;
