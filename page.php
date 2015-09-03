@@ -16,11 +16,14 @@ $infinity_custom_logo         = get_post_meta(get_the_ID(), "infinity_custom_log
 $infinity_page_layout         = get_post_meta(get_the_ID(), 'infinity_page_layout', true);
 $infinity_custom_class        = get_post_meta(get_the_ID(), "infinity_custom_class", true);
 
+
 if ('default' != $infinity_page_layout) {
   // page layout is not default layout
   $layout = get_post_meta(get_the_ID(), "infinity_page_layout", true);
+  exit();
 } else {
   // get layout from customizer if page layout is set default
+  exit();
   $layout = Kirki::get_option( 'infinity', 'site_layout' );
 }
 

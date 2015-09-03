@@ -349,6 +349,426 @@ function thememove_custom_save_post( $post_id ) {
 /**********************/
 
 /**
+ * Modify default The Gallery shortcode.
+ */
+
+add_filter( 'post_gallery', 'mega_gallery_shortcode', 10, 2 );
+
+function mega_gallery_shortcode( $output, $attr ) {
+    global $post, $wp_locale;;
+
+  static $instance = 0;
+  $instance++;
+
+  // We're trusting author input, so let's at least make sure it looks like a valid orderby statement
+  if ( isset( $attr['orderby'] ) ) {
+    $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
+    if ( !$attr['orderby'] )
+      unset( $attr['orderby'] );
+  }
+  
+  if ( ! is_single() && 'post' == get_post_type() ) {
+    $gallery_size = 'blog-thumb';
+  } else {
+    $gallery_size = 'large';
+  }
+
+  extract(shortcode_atts(array(
+    'order'      => 'ASC',
+    'orderby'    => 'menu_order ID',
+    'id'         => $post->ID,
+    'itemtag'    => 'div',
+    'captiontag' => 'figure',
+    'columns'    => 1,
+    'size'       => $gallery_size,
+    'include'    => '',
+    'exclude'    => '',
+  ), $attr));
+
+  $id = intval($id);
+  if ( 'RAND' == $order )
+    $orderby = 'none';
+
+  if ( !empty($include) ) {
+    $include = preg_replace( '/[^0-9,]+/', '', $include );
+    $_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+
+    $attachments = array();
+    foreach ( $_attachments as $key => $val ) {
+      $attachments[$val->ID] = $_attachments[$key];
+    }
+  } elseif ( !empty($exclude) ) {
+    $exclude = preg_replace( '/[^0-9,]+/', '', $exclude );
+    $attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+  } else {
+    $attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+  }
+
+  if ( empty($attachments) )
+    return '';
+
+  if ( is_feed() ) {
+    $output = "\n";
+    foreach ( $attachments as $att_id => $attachment )
+      $output .= wp_get_attachment_link($att_id, $size, true) . "\n";
+    return $output;
+  }
+
+  $itemtag = tag_escape($itemtag);
+  $captiontag = tag_escape($captiontag);
+  $columns = intval($columns);
+
+  $selector = "gallery-{$instance}";
+
+  $size_class = sanitize_html_class( $size );
+  $gallery_div_wrapper = "<div id='$selector' class='gallery-shortcode royalSlider rsDefault'>";
+  $output .= $gallery_div_wrapper;
+
+  $i = 0;
+  foreach ( $attachments as $id => $attachment ) {
+    $link = isset($attr['link']) && 'file' == $attr['link'] ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
+    
+    $output .= "<{$itemtag} class='rsContent'>";
+    $output .= "$link";
+    if ( $captiontag && trim($attachment->post_excerpt) ) {
+      $output .= "
+        <{$captiontag} class='wp-caption-text gallery-caption rsABlock infoBlock rsNoDrag' data-fade-effect='' data-move-offset='10' data-move-effect='bottom' data-speed='200'>" . wptexturize($attachment->post_excerpt) . "</{$captiontag}>";
+    }
+    $output .= "</{$itemtag}>";
+  }
+
+  $output .= "
+    </div>\n";
+    
+  // Remove link
+  if ( $attr['link'] == "none" ) {
+    $output = preg_replace( array('/<a[^>]*>/', '/<\/a>/'), '', $output) ;
+  }
+
+  return $output;
+}
+
+/**
+ * Register our sidebars and widgetized areas.
+ */
+function mega_widgets_init() {
+
+  // register_widget( 'twitter' );
+
+  register_sidebar( array(
+    'name' => __( 'Journal Sidebar', 'mega' ),
+    'id' => 'sidebar-1',
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget' => "</aside>",
+    'before_title' => '<h3 class="widget-title"><span>',
+    'after_title' => '</span></h3>',
+  ) );
+  register_sidebar( array(
+    'name' => __( 'Page Sidebar', 'mega' ),
+    'id' => 'sidebar-2',
+    'description' => __( 'An optional widget area for your pages', 'mega' ),
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget' => "</aside>",
+    'before_title' => '<h3 class="widget-title"><span>',
+    'after_title' => '</span></h3>',
+  ) );
+  register_sidebar( array(
+    'name' => __( 'Shop Sidebar', 'mega' ),
+    'id' => 'sidebar-3',
+    'description' => __( 'An optional widget area for your shop page', 'mega' ),
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget' => "</aside>",
+    'before_title' => '<h3 class="widget-title"><span>',
+    'after_title' => '</span></h3>',
+  ) );
+  register_sidebar( array(
+    'name' => __( 'Footer Area One', 'mega' ),
+    'id' => 'sidebar-4',
+    'description' => __( 'An optional widget area for your site footer', 'mega' ),
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget' => "</aside>",
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ) );
+  register_sidebar( array(
+    'name' => __( 'Footer Area Two', 'mega' ),
+    'id' => 'sidebar-5',
+    'description' => __( 'An optional widget area for your site footer', 'mega' ),
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget' => "</aside>",
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ) );
+  register_sidebar( array(
+    'name' => __( 'Footer Area Three', 'mega' ),
+    'id' => 'sidebar-6',
+    'description' => __( 'An optional widget area for your site footer', 'mega' ),
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget' => "</aside>",
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ) );
+  register_sidebar( array(
+    'name' => __( 'Footer Area Four', 'mega' ),
+    'id' => 'sidebar-7',
+    'description' => __( 'An optional widget area for your site footer', 'mega' ),
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget' => "</aside>",
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ) );
+  
+  register_sidebar( array(
+    'name' => __( 'Footer Shop Area One', 'mega' ),
+    'id' => 'sidebar-8',
+    'description' => __( 'An optional widget area for your shop footer', 'mega' ),
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget' => "</aside>",
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ) );
+  register_sidebar( array(
+    'name' => __( 'Footer Shop Area Two', 'mega' ),
+    'id' => 'sidebar-9',
+    'description' => __( 'An optional widget area for your shop footer', 'mega' ),
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget' => "</aside>",
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ) );
+  register_sidebar( array(
+    'name' => __( 'Footer Shop Area Three', 'mega' ),
+    'id' => 'sidebar-10',
+    'description' => __( 'An optional widget area for your shop footer', 'mega' ),
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget' => "</aside>",
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ) );
+  register_sidebar( array(
+    'name' => __( 'Footer Shop Area Four', 'mega' ),
+    'id' => 'sidebar-11',
+    'description' => __( 'An optional widget area for your shop footer', 'mega' ),
+    'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+    'after_widget' => "</aside>",
+    'before_title' => '<h3 class="widget-title">',
+    'after_title' => '</h3>',
+  ) );
+}
+add_action( 'widgets_init', 'mega_widgets_init' );
+
+if ( ! function_exists( 'mega_content_nav' ) ) :
+/**
+ * Display navigation to next/previous pages when applicable
+ */
+function mega_content_nav( $nav_id ) {
+  global $wp_query;
+
+  if ( $wp_query->max_num_pages > 1 ) : ?>
+    <nav id="<?php echo $nav_id; ?>">
+      <h3 class="assistive-text"><?php _e( 'Post navigation', 'mega' ); ?></h3>
+      <div class="nav-previous"><?php next_posts_link( __( '<i class="icon-chevron-left"></i> Older Entries', 'mega' ) ); ?></div>
+      <div class="nav-next"><?php previous_posts_link( __( 'Newer Entries <i class="icon-chevron-right"></i>', 'mega' ) ); ?></div>
+    </nav><!-- #nav-above -->
+  <?php endif;
+}
+endif; // mega_content_nav
+
+if ( ! function_exists( 'mega_pagination_content_nav' ) ) :
+/**
+ * Display navigation to next/previous pages with pagination when applicable
+ */
+function mega_pagination_content_nav( $nav_id ) {
+  global $wp_query;
+
+  if ( $wp_query->max_num_pages > 1 ) : ?>
+    <nav id="<?php echo $nav_id; ?>">
+      <h3 class="assistive-text"><?php _e( 'Post navigation', 'mega' ); ?></h3>
+      
+      <?php $big = 999999999; // need an unlikely integer
+
+      echo paginate_links( array(
+        'base' => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
+        'format' => '?paged=%#%',
+        'current' => max( 1, get_query_var('paged') ),
+        'total' => $wp_query->max_num_pages,
+        'prev_text' => __('<span class="meta-nav">&#171;</span> Prev', 'mega'),
+        'next_text' => __('Next <span class="meta-nav">&#187;</span>', 'mega'),
+        'end_size' => 3
+      ) ); ?>
+    </nav><!-- #nav-above -->
+  <?php endif;
+}
+endif; // mega_pagination_content_nav
+
+/**
+ * Return the URL for the first link found in the post content.
+ *
+ * @return string|bool URL or false when no link is present.
+ */
+function mega_url_grabber() {
+  if ( ! preg_match( '/<a\s[^>]*?href=[\'"](.+?)[\'"]/is', get_the_content(), $matches ) )
+    return false;
+
+  return esc_url_raw( $matches[1] );
+}
+
+/**
+ * Count the number of footer sidebars to enable dynamic classes for the footer
+ */
+function mega_footer_sidebar_class() {
+  $count = 0;
+
+  if ( is_active_sidebar( 'sidebar-4' ) )
+    $count++;
+
+  if ( is_active_sidebar( 'sidebar-5' ) )
+    $count++;
+    
+  if ( is_active_sidebar( 'sidebar-6' ) )
+    $count++;
+    
+  if ( is_active_sidebar( 'sidebar-7' ) )
+    $count++;
+    
+    
+  if ( is_active_sidebar( 'sidebar-8' ) )
+    $count++;
+
+  if ( is_active_sidebar( 'sidebar-9' ) )
+    $count++;
+    
+  if ( is_active_sidebar( 'sidebar-10' ) )
+    $count++;
+    
+  if ( is_active_sidebar( 'sidebar-11' ) )
+    $count++;
+
+  $class = '';
+
+  switch ( $count ) {
+    case '1':
+      $class = 'one clearfix';
+      break;
+    case '2':
+      $class = 'two clearfix';
+      break;
+    case '3':
+      $class = 'three clearfix';
+      break;
+    case '4':
+      $class = 'four clearfix';
+      break;
+      
+    case '8':
+      $class = 'one clearfix';
+      break;
+    case '9':
+      $class = 'two clearfix';
+      break;
+    case '10':
+      $class = 'three clearfix';
+      break;
+    case '11':
+      $class = 'four clearfix';
+      break;
+  }
+
+  if ( $class )
+    echo 'class="' . $class . '"';
+}
+
+if ( ! function_exists( 'mega_comment' ) ) :
+/**
+ * Template for comments and pingbacks.
+ */
+function mega_comment( $comment, $args, $depth ) {
+  $GLOBALS['comment'] = $comment;
+  switch ( $comment->comment_type ) :
+    case 'pingback' :
+    case 'trackback' :
+  ?>
+  <li class="post pingback">
+    <p><?php _e( 'Pingback:', 'mega' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'mega' ), '<span class="edit-link">', '</span>' ); ?></p>
+  <?php
+      break;
+    default :
+  ?>
+  <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+    <article id="comment-<?php comment_ID(); ?>" class="comment">
+      <footer class="comment-meta">
+        <div class="avatar vcard">
+          <?php
+            $avatar_size = 45;
+
+            echo get_avatar( $comment, $avatar_size );
+
+          ?>
+
+        </div><!-- .comment-author .vcard -->
+
+        <?php if ( $comment->comment_approved == '0' ) : ?>
+          <em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'mega' ); ?></em>
+          <br />
+        <?php endif; ?>
+
+      </footer>
+
+      <div class="comment-content">
+      <div class="comment-author vcard">
+          <?php
+
+            // translators: 1: comment author, 2: date and time */
+            printf( __( '%1$s on %2$s <span class="says"> - </span>', 'mega' ),
+              
+              sprintf( '<span class="fn">%s</span>', get_comment_author_link() ),
+              sprintf( '<a href="%1$s"><time pubdate datetime="%2$s">%3$s</time></a>',
+                esc_url( get_comment_link( $comment->comment_ID ) ),
+                get_comment_time( 'c' ),
+                /* translators: 1: date, 2: time */
+                sprintf( __( '%1$s %2$s', 'mega' ), get_comment_date('M j, Y'), get_comment_time() )
+              )
+            );
+            
+            comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'mega' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) );
+              $show_sep = true;
+              if ( $show_sep ) :
+                $sep = '<span class="sep"> &middot; </span>';
+              endif; // End if $show_sep
+              edit_comment_link( __( 'Edit', 'mega' ), '' . $sep . '<span class="edit-link">', '</span>' );
+          ?>
+
+      </div><!-- .comment-author .vcard -->
+        
+      <?php comment_text(); ?>
+      
+      </div>
+
+    </article><!-- #comment-## -->
+
+  <?php
+      break;
+  endswitch;
+}
+endif; // ends check for mega_comment()
+
+if ( ! function_exists( 'mega_posted_on' ) ) :
+/**
+ * Prints HTML with meta information for the current post-date/time and author.
+ */
+function mega_posted_on() {
+  printf( __( '<p><time class="entry-date" datetime="%2$s">%3$s</time></p><span class="by-author"> <span class="sep"> | </span> <span class="author vcard"><a class="url fn n" href="%4$s" title="%5$s" rel="author">%6$s</a></span></span>', 'mega' ),
+    esc_attr( get_the_time() ),
+    esc_attr( get_the_date( 'c' ) ),
+    esc_html( get_the_date() ),
+    esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+    esc_attr( sprintf( __( 'View all posts by %s', 'mega' ), get_the_author() ) ),
+    get_the_author()
+  );
+}
+endif;
+
+/**
  * Registering a post type called "Portfolios".
  */
 function create_portfolio_type() {

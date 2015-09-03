@@ -3,8 +3,7 @@
  * The template for displaying content in the single.php template
  *
  * @package WordPress
- * @subpackage Razzo
- * @since Razzo 1.0
+ * @subpackage Lily
  */
 ?>
 

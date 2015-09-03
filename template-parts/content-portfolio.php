@@ -2,7 +2,7 @@
 /**
  * The default template for displaying summary for portfolio
  *
- * @package WordPress
+ * @package ThemeMove
  */
 ?>	
 

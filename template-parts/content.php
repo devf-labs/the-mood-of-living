@@ -2,12 +2,11 @@
 /**
  * The default template for displaying content
  *
- * @package WordPress
- * @subpackage Razzo
- * @since Razzo 1.0
+ * @package ThemeMove
+ * @subpackage Lily
  */
 ?>
-
+<?php echo $as ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?>>
 		
 		<div class="entry-content-meta-wrapper">

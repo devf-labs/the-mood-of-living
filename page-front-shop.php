@@ -2,9 +2,8 @@
 /**
  * Template Name: Front Page Shop
  *
- * @package WordPress
- * @subpackage Razzo
- * @since Razzo 1.0
+ * @package ThemeMove
+ * @subpackage Lily
  */
 
 get_header(); ?>

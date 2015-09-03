@@ -3,9 +3,8 @@
  * Template Name: Full Width
  * Description: A Page Template that adds a full width to pages
  *
- * @package WordPress
- * @subpackage Heat
- * @since Heat 1.0
+ * @package ThemeMove
+ * @subpackage Lily
  */
 
 get_header(); ?>

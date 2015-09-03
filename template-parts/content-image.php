@@ -2,9 +2,8 @@
 /**
  * The template for displaying posts in the Image Post Format
  *
- * @package WordPress
- * @subpackage Razzo
- * @since Razzo 1.0
+ * @package ThemeMove
+ * @subpackage Lily
  */
 ?>
 

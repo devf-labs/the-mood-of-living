@@ -2,9 +2,8 @@
 /**
  * The template used for displaying page content in page.php
  *
- * @package WordPress
- * @subpackage Razzo
- * @since Razzo 1.0
+ * @package ThemeMove
+ * @subpackage Lily
  */
 ?>
 

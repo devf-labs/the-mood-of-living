@@ -3,9 +3,8 @@
  * Template Name: Portfolio
  * Description: A Page Template that adds a portfolio to pages
  *
- * @package WordPress
- * @subpackage Razzo
- * @since Razzo 1.0
+ * @package ThemeMove
+ * @subpackage Lily
  */
 
 get_header(); ?>

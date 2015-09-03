@@ -3,7 +3,7 @@
  * The template for displaying posts in the Status Post Format
  *
  * @package WordPress
- * @subpackage Razzo
+ * @subpackage Lily
  */
 ?>
 
