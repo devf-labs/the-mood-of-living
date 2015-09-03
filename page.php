@@ -20,17 +20,15 @@ $infinity_custom_class        = get_post_meta(get_the_ID(), "infinity_custom_cla
 if ('default' != $infinity_page_layout) {
   // page layout is not default layout
   $layout = get_post_meta(get_the_ID(), "infinity_page_layout", true);
-  exit();
 } else {
   // get layout from customizer if page layout is set default
-  exit();
   $layout = Kirki::get_option( 'infinity', 'site_layout' );
 }
 
 get_header(); ?>
 
 <div class="content-wrapper">
-  <div class="container space-content">
+  <div class="container">
     <div class="row">
       <?php if('sidebar-content' == $layout){ ?>
         <?php get_sidebar(); ?>

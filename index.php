@@ -8,8 +8,8 @@
 
 get_header(); ?>
 
-	<div id="main" class="clearfix space-content">
-		<div id="primary">
+	<div id="main" class="clearfix row">
+		<div id="primary" class="col-md-9">
 			<div id="content" role="main">
 				<?php $enable_blog_title = ot_get_option( 'enable_blog_title' ); ?>
 				<?php if ( ! empty( $enable_blog_title ) ) { ?>

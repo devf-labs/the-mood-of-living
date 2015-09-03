@@ -1255,10 +1255,8 @@ body {
     border: none;
 }
 #secondary {
-    float: right;
     margin: 0;
     padding: 30px 0 30px 30px;
-    width: 220px;
 }
 /* Attachments */
 
@@ -1327,11 +1325,9 @@ body.blog h1.entry-title {
 .archive #primary,
 .search #primary,
 .blog #primary {
-    width: 708px;
     margin: 0;
     border-right: 1px solid #cfcfcf;
     padding: 30px 0 0;
-    float: left;
 }
 .archive #secondary,
 .search #secondary,
@@ -1712,12 +1708,6 @@ img.live {
 }
 /*///////////////////////////////// JOURNAL /////////////////////////////////*/
 
-#secondary,
-.archive #secondary,
-.search #secondary,
-.blog #secondary {
-    padding: 30px 0
-}
 img.mood-board {
     opacity: 1;
     filter: alpha(opacity=100);
@@ -9693,6 +9683,6 @@ div[itemprop="description"] p a {
 }
 
 /* Classes for The Mood of Living */
-.space-content{
-  margin-top: 120px !important;
+.space-content, #page{
+  margin-top: 170px !important;
 }

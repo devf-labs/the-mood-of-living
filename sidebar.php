@@ -7,7 +7,7 @@
  * @subpackage Lily
  */
 ?>
-		<div id="secondary" class="widget-area" role="complementary">
+		<div id="secondary" class="widget-area col-md-3" role="complementary">
 			<?php global $woocommerce; ?>
 			<?php if ( is_page() ) : ?>
 			
