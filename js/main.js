@@ -142,7 +142,7 @@ jQuery(document).ready(function ($) {
 
   // mobile menu setup
   var $menu = $('.nav'),
-    $menulink = $('.menu-link');
+    $menulink = $('.menu-link'), $subMenu = $(".sub-menu");
 
   $menulink.on('click', function () {
     $menulink.toggleClass('active');
@@ -151,7 +151,6 @@ jQuery(document).ready(function ($) {
 
   $menu.find('.sub-menu-toggle').on('click', function (e) {
     var subMenu = $(this).next();
-
     if (subMenu.css('display') == 'block') {
       subMenu.css('display', 'block').slideUp().parent().removeClass('expand');
     } else {
@@ -159,6 +158,11 @@ jQuery(document).ready(function ($) {
     }
     e.stopPropagation();
   });
+
+  $menu.find('.menu-item').toggle(function () {
+        $(this).find('.sub-menu').css("display","block")},
+    function () {
+      $(this).find('.sub-menu').css("display","None") });
 
   $(document).on('click', function (e) {
     if ($(e.target).closest('.menu-link').length == 0) {
