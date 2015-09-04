@@ -2,9 +2,8 @@
 /**
  * The Template for displaying single portfolio.
  *
- * @package WordPress
- * @subpackage Razzo
- * @since Razzo 1.0
+ * @package ThemeMove
+ * @subpackage Lily
  */
 
 get_header(); ?>

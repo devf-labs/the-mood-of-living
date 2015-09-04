@@ -1648,7 +1648,19 @@ blockquote p {
   letter-spacing: 0.05em;
   margin-bottom: 40px;
 }
+
+@media only screen and (max-width: 940px) {
+  #primary{
+    padding-left: 30px !important;
+  }
+
+  #secondary{
+    padding-right: 30px;
+  }
+}
+
 @media only screen and (min-width: 768px) {
+
   .scrollup {
     display: block;
     cursor: pointer;
