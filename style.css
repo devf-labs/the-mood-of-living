@@ -2042,15 +2042,15 @@ body.page-template-page-portfolio-php #primary {
     border: none;
 }
 
-#home-portfolio article .content-wrapper{
+.home-portfolio-home article .content-wrapper{
   padding-top: 0;
 }
 
-#home-portfolio article.post{
+.home-portfolio-home article.post{
   margin: 0;
 }
 
-#home-portfolio .row > .col-md-4{
+.home-portfolio-home .row > .col-md-4{
   margin-bottom: 20px;
 }
 

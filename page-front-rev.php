@@ -76,7 +76,7 @@ get_header(); ?>
 				<div id="home-portfolio-wrapper" class="clearfix row">
 						
 						
-						<div id="home-portfolio" class="col-sm-12">
+						<div id="home-portfolio" class="col-sm-12 home-portfolio-home">
 							<div class="row">
 								
 						<?php
