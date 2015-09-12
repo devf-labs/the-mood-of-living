@@ -2019,9 +2019,9 @@ body.page-template-page-portfolio-php #primary {
     color: #111;
 }
 
-#home-portfolio{
+/*#home-portfolio{
   margin-top: -40px;
-}
+}*/
 
 .portfolio-thumbnail-medium {
     width: 300px;
@@ -2041,20 +2041,33 @@ body.page-template-page-portfolio-php #primary {
     padding: 0;
     border: none;
 }
+
+#home-portfolio article .content-wrapper{
+  padding-top: 0;
+}
+
+#home-portfolio article.post{
+  margin: 0;
+}
+
+#home-portfolio .row > .col-md-4{
+  margin-bottom: 20px;
+}
+
 .page-template-page-front-php .home-content p {
     margin: 0;
 }
 /* Home Quote */
-.home-content{
+/*.home-content{
   margin-bottom: 40px;
 }
-
+*/
 .quoteWrp {
     border: 1px solid #ccc;
-    min-height: 418px;
     display: table;
     width: 100%;
     padding: 0 2%;
+    height: 200px;
 }
 .quoteWrp .quoteTexts {
     font-size: 24px;

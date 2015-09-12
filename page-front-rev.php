@@ -76,43 +76,85 @@ get_header(); ?>
 				<div id="home-portfolio-wrapper" class="clearfix row">
 						
 						
-						<div id="home-portfolio" class="col-sm-8">
+						<div id="home-portfolio" class="col-sm-12">
 							<div class="row">
 								
 						<?php
 							$home_portfolios_per_page = ot_get_option( 'home_portfolios_per_page' );
 
-							$home_portfolio_meet = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => 1, 'no_found_rows' => true, 'post_status' => 'publish', 'portfolio-category' => 'meet'));  
+							$travel_portfolios = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => 1, 'no_found_rows' => true, 'post_status' => 'publish', 'portfolio-category' => 'travel'));  
 
-							$home_portfolio_live = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => 1, 'no_found_rows' => true, 'post_status' => 'publish', 'portfolio-category' => 'live')); 
+							$culture_portfolios = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => 1, 'no_found_rows' => true, 'post_status' => 'publish', 'portfolio-category' => 'culture')); 
 
-							$home_portfolio_find = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => 1, 'no_found_rows' => true, 'post_status' => 'publish', 'portfolio-category' => 'find')); 
+							$meet_portfolios = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => 1, 'no_found_rows' => true, 'post_status' => 'publish', 'portfolio-category' => 'meet')); 
 
-							$home_portfolio_journal = new WP_Query(array('post_type' => 'post', 'posts_per_page' => 1, 'no_found_rows' => true, 'post_status' => 'publish', 'category' => 'journal')); 
+							$shop_portfolios = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => 1, 'no_found_rows' => true, 'post_status' => 'publish', 'portfolio-category' => 'find')); 
+							
 						?>	
 
 								<?php /* Start the Loops */ ?>
 									
-								<?php while ( $home_portfolio_meet->have_posts() ) : $home_portfolio_meet->the_post(); ?>
-									<div class="col-md-6">
+								<?php while ( $travel_portfolios->have_posts() ) : $travel_portfolios->the_post(); ?>
+									<div class="col-md-4">
 										<?php get_template_part( 'template-parts/content-portfolio' ); ?>
 									</div>
 								<?php endwhile; ?>
 								
-								<?php while ( $home_portfolio_live->have_posts() ) : $home_portfolio_live->the_post(); ?>
-									<div class="col-md-6">
+								<?php while ( $culture_portfolios->have_posts() ) : $culture_portfolios->the_post(); ?>
+									<div class="col-md-4">
 										<?php get_template_part( 'template-parts/content-portfolio' ); ?>
 									</div>
 								<?php endwhile; ?>
 								
-								<?php while ( $home_portfolio_find->have_posts() ) : $home_portfolio_find->the_post(); ?>
-									<div class="col-md-6">
+								<?php while ( $meet_portfolios->have_posts() ) : $meet_portfolios->the_post(); ?>
+									<div class="col-md-4">
 										<?php get_template_part( 'template-parts/content-portfolio' ); ?>
 									</div>
 								<?php endwhile; ?>
 								
-								<?php while ( $home_portfolio_journal->have_posts() ) : $home_portfolio_journal->the_post(); ?>
-									<div class="col-md-6">
+								<?php while ( $shop_portfolios->have_posts() ) : $shop_portfolios->the_post(); ?>
+									<div class="col-md-4">
+										<?php get_template_part( 'template-parts/content-portfolio' ); ?>
+									</div>
+								<?php endwhile; ?>
+
+								<?php wp_reset_query(); ?>
+								<?php  if ( !empty( $post->post_content ) ) : ?>
+									<div class="home-content col-md-4">
+										<?php the_content(); ?>
+									</div>
+								<?php endif; ?>
+								<?php wp_reset_query(); ?>
+
+								<?php
+
+									$wellness_portfolios = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => 1, 'no_found_rows' => true, 'post_status' => 'publish', 'portfolio-category' => 'wellness')); 
+									$design_portfolios = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => 1, 'no_found_rows' => true, 'post_status' => 'publish', 'portfolio-category' => 'design')); 
+									$food_portfolios = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => 1, 'no_found_rows' => true, 'post_status' => 'publish', 'portfolio-category' => 'food')); 
+									$mom = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => 1, 'no_found_rows' => true, 'post_status' => 'publish', 'portfolio-category' => 'food')); 
+								
+								?>
+
+								<?php while ( $wellness_portfolios->have_posts() ) : $wellness_portfolios->the_post(); ?>
+									<div class="col-md-4">
+										<?php get_template_part( 'template-parts/content-portfolio' ); ?>
+									</div>
+								<?php endwhile; ?>
+
+								<?php while ( $design_portfolios->have_posts() ) : $design_portfolios->the_post(); ?>
+									<div class="col-md-4">
+										<?php get_template_part( 'template-parts/content-portfolio' ); ?>
+									</div>
+								<?php endwhile; ?>
+
+								<?php while ( $food_portfolios->have_posts() ) : $food_portfolios->the_post(); ?>
+									<div class="col-md-4">
+										<?php get_template_part( 'template-parts/content-portfolio' ); ?>
+									</div>
+								<?php endwhile; ?>
+
+								<?php while ( $mom->have_posts() ) : $mom->the_post(); ?>
+									<div class="col-md-4">
 										<?php get_template_part( 'template-parts/content-portfolio' ); ?>
 									</div>
 								<?php endwhile; ?>
@@ -121,11 +163,6 @@ get_header(); ?>
 							
 							</div>
 						</div><!-- #home-portfolio -->
-						<?php  if ( !empty( $post->post_content ) ) : ?>
-							<div class="home-content col-md-4">
-								<?php the_content(); ?>
-							</div>
-						<?php endif; ?>
 					</div><!-- #home-portfolio-wrapper -->
 					
 
