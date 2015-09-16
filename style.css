@@ -984,7 +984,7 @@ ol {
     margin: 0;
 }
 li {
-    padding: 0 0 3px;
+    padding: 0 0 10px;
 }
 ul {
     list-style: square;
@@ -3258,11 +3258,10 @@ body.single-portfolio .rsDefault .rsArrow:hover .rsArrowIcn {
 }
 .meet ul.products:before,
 .live ul.products:before {
-    content: "SELECTS";
+    content: "Shop the Story";
     font-size: 15px;
     line-height: 1;
-    text-transform: uppercase;
-    font-family: 'AvenirBlack', Myriad Pro, sans-serif, Helvetica;
+    font-family: Playfair Display;
     font-weight: normal;
     font-style: normal;
     margin: 0px;
@@ -9695,4 +9694,8 @@ div[itemprop="description"] p a {
 /* Classes for The Mood of Living */
 .space-content, #page{
   margin-top: 170px !important;
+}
+.crp_title{
+  font-size: 15px !important;
+  font-weight: 500;
 }
