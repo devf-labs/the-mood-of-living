@@ -4266,7 +4266,8 @@ a:hover .portfolio-view-wrapper {
     overflow: hidden;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #FFF;
     opacity: 0;
     -webkit-transition: all 0.2s 0.3s ease-in-out;
     -moz-transition: all 0.2s 0.3s ease-in-out;
@@ -4290,6 +4291,13 @@ a:hover .portfolio-view-wrapper {
     -ms-transform: translate(0px, 0px);
     transform: translate(0px, 0px);
 }
+
+.post-thumbnail:hover .entry-header,
+.post-thumbnail:hover h4 .entry-category {
+  color: #000;
+  
+}
+
 .post-thumbnail h2 {
     font-size: 21px;
     font-weight: normal;
