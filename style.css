@@ -3259,14 +3259,14 @@ body.single-portfolio .rsDefault .rsArrow:hover .rsArrowIcn {
 .meet ul.products:before,
 .live ul.products:before {
     content: "Shop the Story";
-    font-size: 15px;
+    font-size: 19px;
     line-height: 1;
     font-family: Playfair Display;
     font-weight: normal;
     font-style: normal;
     margin: 0px;
-    padding: 0px;
     float: left;
+    padding-bottom: 10px;
 }
 /* Alignment */
 
