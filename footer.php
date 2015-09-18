@@ -30,7 +30,7 @@
         <?php if ( ! empty( $footer_info ) ) { ?>
           <?php echo $footer_info; ?>
         <?php } ?>
-        <?php get_template_part( 'social-accounts' ); // Social accounts ?>
+        <?php get_template_part('template-parts/social-accounts' ); // Social accounts ?>
         <?php
         /*
          * Print the sub-footer info.
