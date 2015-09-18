@@ -76,7 +76,7 @@ get_header(); ?>
 				<div id="home-portfolio-wrapper" class="clearfix row">
 						
 						
-						<div id="home-portfolio" class="col-sm-12 home-portfolio-home">
+						<div id="home-portfolio" class="home-portfolio-home">
 							<div class="row">
 								
 						<?php
@@ -95,32 +95,32 @@ get_header(); ?>
 								<?php /* Start the Loops */ ?>
 									
 								<?php while ( $travel_portfolios->have_posts() ) : $travel_portfolios->the_post(); ?>
-									<div class="col-md-4">
+									<!-- <div class="col-md-4"> -->
 										<?php get_template_part( 'template-parts/content-portfolio' ); ?>
-									</div>
+									<!-- </div> -->
 								<?php endwhile; ?>
 								
 								<?php while ( $culture_portfolios->have_posts() ) : $culture_portfolios->the_post(); ?>
-									<div class="col-md-4">
+									<!-- <div class="col-md-4"> -->
 										<?php get_template_part( 'template-parts/content-portfolio' ); ?>
-									</div>
+									<!-- </div> -->
 								<?php endwhile; ?>
 								
 								<?php while ( $meet_portfolios->have_posts() ) : $meet_portfolios->the_post(); ?>
-									<div class="col-md-4">
+									<!-- <div class="col-md-4"> -->
 										<?php get_template_part( 'template-parts/content-portfolio' ); ?>
-									</div>
+									<!-- </div> -->
 								<?php endwhile; ?>
 								
 								<?php while ( $shop_portfolios->have_posts() ) : $shop_portfolios->the_post(); ?>
-									<div class="col-md-4">
+									<!-- <div class="col-md-4"> -->
 										<?php get_template_part( 'template-parts/content-portfolio' ); ?>
-									</div>
+									<!-- </div> -->
 								<?php endwhile; ?>
 
 								<?php wp_reset_query(); ?>
 								<?php  if ( !empty( $post->post_content ) ) : ?>
-									<div class="home-content col-md-4">
+									<div class="home-content col-sm-4">
 										<?php the_content(); ?>
 									</div>
 								<?php endif; ?>
@@ -136,27 +136,27 @@ get_header(); ?>
 								?>
 
 								<?php while ( $wellness_portfolios->have_posts() ) : $wellness_portfolios->the_post(); ?>
-									<div class="col-md-4">
+									<!-- <div class="col-md-4"> -->
 										<?php get_template_part( 'template-parts/content-portfolio' ); ?>
-									</div>
+									<!-- </div> -->
 								<?php endwhile; ?>
 
 								<?php while ( $design_portfolios->have_posts() ) : $design_portfolios->the_post(); ?>
-									<div class="col-md-4">
+									<!-- <div class="col-md-4"> -->
 										<?php get_template_part( 'template-parts/content-portfolio' ); ?>
-									</div>
+									<!-- </div> -->
 								<?php endwhile; ?>
 
 								<?php while ( $food_portfolios->have_posts() ) : $food_portfolios->the_post(); ?>
-									<div class="col-md-4">
+									<!-- <div class="col-md-4"> -->
 										<?php get_template_part( 'template-parts/content-portfolio' ); ?>
-									</div>
+									<!-- </div> -->
 								<?php endwhile; ?>
 
 								<?php while ( $mom->have_posts() ) : $mom->the_post(); ?>
-									<div class="col-md-4">
+									<!-- <div class="col-md-4"> -->
 										<?php get_template_part( 'template-parts/content-portfolio' ); ?>
-									</div>
+									<!-- </div> -->
 								<?php endwhile; ?>
 														
 							<?php wp_reset_query(); ?>

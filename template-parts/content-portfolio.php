@@ -7,7 +7,7 @@
 ?>	
 
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class(array('clearfix')); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class(array('clearfix', 'col-sm-4')); ?>>
 		<div class="content-wrapper">
 
 			<?php if ( has_post_thumbnail() ) : ?>

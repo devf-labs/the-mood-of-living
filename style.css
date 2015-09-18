@@ -2042,15 +2042,17 @@ body.page-template-page-portfolio-php #primary {
     border: none;
 }
 
-.home-portfolio-home article .content-wrapper{
-  padding-top: 0;
-}
+/*.home-portfolio-home article .content-wrapper{
+  padding-top: 20px;
+}*/
 
 .home-portfolio-home article.post{
   margin: 0;
 }
 
-.home-portfolio-home .row > .col-md-4{
+.home-portfolio-home .col-md-4,
+.home-portfolio-home .col-sm-4,
+#home-portfolio .col-sm-4{
   margin-bottom: 20px;
 }
 
@@ -9736,3 +9738,6 @@ div[itemprop="description"] p a {
     padding: 0 !important
 }
 
+.content-wrapper{
+  padding-top: 0 !important;
+}
