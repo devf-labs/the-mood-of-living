@@ -9731,3 +9731,8 @@ div[itemprop="description"] p a {
   }
 }
 
+#rev_slider_1_1, #rev_slider_1_1_wrapper {
+    max-width: 100% !important;
+    padding: 0 !important
+}
+
