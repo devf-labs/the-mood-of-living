@@ -5212,6 +5212,7 @@ p.comment-form-comment {
 
 ul.footerNav {
     margin-top: 0px;
+    padding: 0 30px;
 }
 ul.footerNav li {
     float: left;
