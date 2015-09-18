@@ -17,22 +17,22 @@ function thememove_get_color_schemes() {
         '#ddbe86',//primary_color--------------------------0
         '#111111',//secondary_color------------------------1
         '#ffffff',//body_bg_color--------------------------2
-        '#858585',//body_text_color------------------------3
+        '#000',//body_text_color------------------------3
         '#111111',//heading_color--------------------------4
         '#ddbe85',//body_link_color------------------------5
         '#666666',//body_link_hover_color------------------6
         '#ffffff',//header_bg_color------------------------7
-        '#858585',//header_text_color----------------------8
+        '#000',//header_text_color----------------------8
         '#eeeeee',//header_border_bottom_color-------------9
         '#cccccc',//social_color---------------------------10
         '#ddbe86',//social_hover_color---------------------11
-        '#858585',//search_color---------------------------12
+        '#000',//search_color---------------------------12
         '#eeeeee',//search_input_border_color--------------13
         '#ddbe86',//search_input_border_color_focus--------14
         '#ddbe86',//search_btn_color-----------------------15
         '#ffffff',//menu_bg_color--------------------------16
-        '#111111',//menu_link------------------------------17
-        '#ddbe86',//menu_link_hover------------------------18
+        '#000000',//menu_link------------------------------17
+        '#649494',//menu_link_hover------------------------18
         '#ffffff',//sub_menu_bg_color----------------------19
         '#666666',//sub_menu_link--------------------------20
         '#ddbe86',//sub_menu_link_hover--------------------21
@@ -47,12 +47,12 @@ function thememove_get_color_schemes() {
         '#ddbe86',//mobile_menu_sub_menu_toggle_btn_color--30
         '#ffffff',//footer_bg_color------------------------31
         '#eeeeee',//footer_border_color--------------------32
-        '#666666',//footer_text_color----------------------33
-        '#ddbe86',//footer_link_color----------------------34
-        '#666666',//footer_link_color_on_hover-------------35
+        '#000000',//footer_text_color----------------------33
+        '#000000',//footer_link_color----------------------34
+        '#649494',//footer_link_color_on_hover-------------35
         '#f7f7f7',//footer_menu_bg_color-------------------36
-        '#666666',//footer_menu_link_color-----------------37
-        '#ddbe86',//footer_menu_link_color_on_hover--------38
+        '#000000',//footer_menu_link_color-----------------37
+        '#649494',//footer_menu_link_color_on_hover--------38
         '#ffffff',//copyright_bg_color---------------------39
         '#111111',//copyright_text_color-------------------40
         '#ddbe86',//copyright_link_color-------------------41
@@ -126,9 +126,9 @@ define('footer_copyright_enable', 1);
 define('footer_copyright_text', __('Made with <a target="_blank" href="http://thememove.com"><i class="fa fa-heart"></i></a> by ThemeMove.com. All rights Reserved.','thememove'));
 
 //Create default settings for section: site typography
-define('body_font_family', 'Lato');
+define('body_font_family', 'Georgia, Helvetica Neue,Helvetica, sans-serif');
 define('body_font_weight', 400);
-define('body_font_size', 13);
+define('body_font_size', 15);
 define('site_heading_font_family', 'Playfair Display');
 define('site_heading_font_weight', 400);
 define('site_h1_font_size', 32);
