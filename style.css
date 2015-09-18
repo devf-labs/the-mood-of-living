@@ -4266,7 +4266,7 @@ a:hover .portfolio-view-wrapper {
     overflow: hidden;
     top: 0;
     left: 0;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.8);
     color: #FFF;
     opacity: 0;
     -webkit-transition: all 0.2s 0.3s ease-in-out;
