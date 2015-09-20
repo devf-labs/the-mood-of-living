@@ -129,7 +129,7 @@ define('footer_copyright_text', __('Made with <a target="_blank" href="http://th
 define('body_font_family', 'Georgia, Helvetica Neue,Helvetica, sans-serif');
 define('body_font_weight', 400);
 define('body_font_size', 15);
-define('site_heading_font_family', 'Playfair Display');
+define('site_heading_font_family', 'Georgia, Helvetica Neue,Helvetica, sans-serif');
 define('site_heading_font_weight', 400);
 define('site_h1_font_size', 32);
 define('site_h2_font_size', 28);
