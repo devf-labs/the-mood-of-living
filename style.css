@@ -51,7 +51,7 @@ Tags: black, dark, light, two-columns, left-sidebar, fixed-layout, responsive-la
   padding-left: 0;
 }
 .main-navigation ul.children {
-    border: 1px solid #ddbe86;
+    border: 1px solid #649494;
     border-right-color: #eee;
     border-left-color: #eee;
 }
@@ -3485,7 +3485,6 @@ a:hover .portfolio-view-wrapper {
 
 .latest-stories h4 {
   margin: -7px auto;
-  background: #fff;
   font-size: 12px;
   font-weight: bold;
   width: 120px;

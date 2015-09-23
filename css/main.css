@@ -3105,7 +3105,7 @@ Footer
   letter-spacing: 0.1em !important;
 }
 .rev_slider_wrapper .tp-caption.lily-button:hover a {
-  color: #ddbe86 !important;
+  color: #649494 !important;
 }
 /*---------------------------------------------
   MailChimp
@@ -3157,7 +3157,7 @@ button.mfp-close {
   border-color: #e04949;
 }
 .wpcf7-form input[type="submit"] {
-  color: #ddbe86 !important;
+  color: #649494 !important;
   background-color: transparent;
   padding: 15px 20px;
 }
