@@ -14,7 +14,7 @@ function thememove_get_color_schemes() {
     'scheme1'  => array(
       'label'  => __( 'Color Scheme 01', 'thememove' ),
       'colors' => array(
-        '#ddbe86',//primary_color--------------------------0
+        '#649494',//primary_color--------------------------0
         '#111111',//secondary_color------------------------1
         '#ffffff',//body_bg_color--------------------------2
         '#000',//body_text_color------------------------3
@@ -25,26 +25,26 @@ function thememove_get_color_schemes() {
         '#000',//header_text_color----------------------8
         '#eeeeee',//header_border_bottom_color-------------9
         '#cccccc',//social_color---------------------------10
-        '#ddbe86',//social_hover_color---------------------11
+        '#649494',//social_hover_color---------------------11
         '#000',//search_color---------------------------12
         '#eeeeee',//search_input_border_color--------------13
-        '#ddbe86',//search_input_border_color_focus--------14
-        '#ddbe86',//search_btn_color-----------------------15
+        '#649494',//search_input_border_color_focus--------14
+        '#649494',//search_btn_color-----------------------15
         '#ffffff',//menu_bg_color--------------------------16
         '#000000',//menu_link------------------------------17
         '#649494',//menu_link_hover------------------------18
         '#ffffff',//sub_menu_bg_color----------------------19
         '#666666',//sub_menu_link--------------------------20
-        '#ddbe86',//sub_menu_link_hover--------------------21
-        '#ddbe86',//sub_menu_border_bottom_&_top-----------22
+        '#649494',//sub_menu_link_hover--------------------21
+        '#649494',//sub_menu_border_bottom_&_top-----------22
         '#eeeeee',//sub_menu_border_left_&_right-----------23
         '#858585',//mobile_button_normal-------------------24
-        '#ddbe86',//mobile_button_active-------------------25
-        '#ddbe86',//mobile_menu_border_bottom_&_top--------26
+        '#649494',//mobile_button_active-------------------25
+        '#649494',//mobile_menu_border_bottom_&_top--------26
         '#eeeeee',//mobile_menu_border_left_&_right--------27
         '#ffffff',//mobile_menu_sub_menu_bg----------------28
         '#ffffff',//mobile_menu_sub_menu_toggle_btn_bg-----29
-        '#ddbe86',//mobile_menu_sub_menu_toggle_btn_color--30
+        '#649494',//mobile_menu_sub_menu_toggle_btn_color--30
         '#ffffff',//footer_bg_color------------------------31
         '#eeeeee',//footer_border_color--------------------32
         '#000000',//footer_text_color----------------------33
@@ -55,17 +55,17 @@ function thememove_get_color_schemes() {
         '#649494',//footer_menu_link_color_on_hover--------38
         '#ffffff',//copyright_bg_color---------------------39
         '#111111',//copyright_text_color-------------------40
-        '#ddbe86',//copyright_link_color-------------------41
+        '#649494',//copyright_link_color-------------------41
         '#111111',//copyright_link_color_on_hover----------42
         '#ffffff',//page_heading_bg------------------------43
         '#111111',//page_heading_text----------------------44
         '#ffffff',//page_bg_color--------------------------45
-        '#ddbe86',//button_background_color----------------46
-        '#ddbe86',//button_border_color--------------------47
+        '#649494',//button_background_color----------------46
+        '#649494',//button_border_color--------------------47
         '#ffffff',//button_text_color----------------------48
         '#ffffff',//button_background_color_on_hover-------49
-        '#ddbe86',//button_border_color_on_hover-----------50
-        '#ddbe86',//button_text_color_on_hover-------------51
+        '#649494',//button_border_color_on_hover-----------50
+        '#649494',//button_text_color_on_hover-------------51
       )
     )
   ));
