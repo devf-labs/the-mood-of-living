@@ -1988,6 +1988,7 @@ body.page-template-page-portfolio-php #primary {
     margin: 0;
     padding: 0;
     float: left;
+    display: none;
 }
 .project-image {
     margin: 0 0 30px;
