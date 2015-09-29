@@ -873,6 +873,7 @@ img.mood-board {
 .featured-post img {
     width: 100%;
     width: 940px;
+    height: 445px;
 }
 
 .element .post-thumbnail img,
