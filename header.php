@@ -25,7 +25,7 @@
   <header <?php header_class(); ?>>
   <div class="container">
     <div class="row">
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-left:90px;">
+      <div class="col-lg-3 col-lg-offset-1 col-md-3 col-sm-6 col-xs-12">
         <div class="site-branding">
           <?php
           global $infinity_custom_logo;
