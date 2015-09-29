@@ -131,7 +131,7 @@ get_header(); ?>
 									$wellness_portfolios = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => 1, 'no_found_rows' => true, 'post_status' => 'publish', 'portfolio-category' => 'wellness')); 
 									$design_portfolios = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => 1, 'no_found_rows' => true, 'post_status' => 'publish', 'portfolio-category' => 'design')); 
 									$food_portfolios = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => 1, 'no_found_rows' => true, 'post_status' => 'publish', 'portfolio-category' => 'food')); 
-									$mom = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => 1, 'no_found_rows' => true, 'post_status' => 'publish', 'portfolio-category' => 'food')); 
+									$mom = new WP_Query(array('post_type' => 'post', 'posts_per_page' => 1, 'no_found_rows' => true, 'post_status' => 'publish', 'category' => 'journal')); 
 								
 								?>
 

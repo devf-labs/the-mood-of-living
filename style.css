@@ -800,7 +800,7 @@ textarea {
 /*///////////////////////////////// Meet Page Style /////////////////////////////////*/
 /*This is for the border above and below the MEET PRODUCTS*/
 
-.meet .woocommerce ul {
+.element .woocommerce ul {
     border-bottom: 1px solid #CCCCCC !important;
     border-top: 1px solid #CCCCCC !important;
     /* This is so the right column is level with title */
@@ -808,14 +808,14 @@ textarea {
     clear: none !important;
     float: right !important;
 }
-.meet .woocommerce ul.products li.product,
+.element .woocommerce ul.products li.product,
 .woocommerce-page ul.products li.product {
     width: 46.1% !important;
     margin-bottom: 0 !important;
 }
 /* Vertically Align Images */
 
-.single-portfolio .meet ul.products li.product a {
+.single-portfolio .element ul.products li.product a {
     text-decoration: none;
     height: 160px;
     width: 140px;
@@ -823,7 +823,7 @@ textarea {
     text-align: center;
     vertical-align: middle;
 }
-.single-portfolio .meet ul.products li.product a img {
+.single-portfolio .element ul.products li.product a img {
     vertical-align: middle;
 }
 /*///////////////////////////////// LIVE Page Styles /////////////////////////////////*/
@@ -875,7 +875,7 @@ img.mood-board {
     width: 940px;
 }
 
-.meet .post-thumbnail img,
+.element .post-thumbnail img,
 .live .post-thumbnail img {
     width: 300px;
     height: 200px;
@@ -2297,7 +2297,7 @@ body.single-portfolio .rsDefault .rsArrow:hover .rsArrowIcn {
 }
 /*///////////////////////////////// General Styles for Meet, Live, Find Single Portfolios /////////////////////////////////*/
 
-.single-portfolio #content .meet {
+.single-portfolio #content .element {
     border-top: 1px solid #ccc;
     padding: 30px 0 0 0;
     margin: 30px 0 0 0;
@@ -2364,22 +2364,21 @@ body.single-portfolio .rsDefault .rsArrow:hover .rsArrowIcn {
 }
 /*Removing bottom margin for MEET section columns*/
 
-.meet .su-column {
+.element .su-column {
     margin: 0 4% 0 0;
 }
-.meet .su-column-size-2-3,
-.meet .two-third,
-.live .su-column-size-2-3,
-.live .two-third,
-.find .su-column-size-2-3,
-.find .two-third,
+
+.element .su-column-size-2-3,
+.element .two-third,
+.element .su-column-size-2-3,
+.element .two-third,
 .page .su-column-size-2-3 {
     width: 63.6%;
 }
-.meet .su-column-size-1-3,
-.meet .one-third,
-.live .su-column-size-1-3,
-.live .one-third,
+.element .su-column-size-1-3,
+.element .one-third,
+.element .su-column-size-1-3,
+.element .one-third,
 .find .su-column-size-1-3,
 .find .one-third {
     width: 32.147%;
@@ -2391,8 +2390,8 @@ body.single-portfolio .rsDefault .rsArrow:hover .rsArrowIcn {
 .su-youtube {
     margin: 0 !important;
 }
-.meet .portfolio-description,
-.live .portfolio-description {
+.element .portfolio-description,
+.element .portfolio-description {
     float: none;
 }
 #portfolio-description p,
@@ -2403,18 +2402,18 @@ body.single-portfolio .rsDefault .rsArrow:hover .rsArrowIcn {
 /*///////////////////////////////// SELECTS /////////////////////////////////*/
 /* Balance margin on selected products */
 
-.meet .woocommerce,
-.live .woocommerce {
+.element .woocommerce,
+.element .woocommerce {
     overflow: hidden;
 }
-.meet ul.products,
-.live ul.products {
+.element ul.products,
+.element ul.products {
     padding-top: 1.4em !important;
     width: 327px;
     margin: 0 -24px 0 0 !important;
 }
-.meet ul.products:before,
-.live ul.products:before {
+.element ul.products:before,
+.element ul.products:before {
     content: "Shop the Story";
     font-size: 19px;
     line-height: 1;
@@ -3481,6 +3480,10 @@ a:hover .portfolio-view-wrapper {
 
 .latest-stories.margin-40{
     margin: 40px 0px;
+}
+
+.latest-stories.margin-40 h4{
+  background: #FFF;
 }
 
 .latest-stories h4 {
