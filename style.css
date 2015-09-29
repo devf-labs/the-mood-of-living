@@ -869,11 +869,11 @@ img.mood-board {
 
 .featured-post {
     position: relative;
+    max-height: 455px;
 }
 .featured-post img {
     width: 100%;
     width: 940px;
-    max-height: 445px;
 }
 
 .element .post-thumbnail img,
