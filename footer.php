@@ -54,6 +54,21 @@
 
 <?php wp_footer(); ?>
 
+<script>
+  var $ = jQuery;
+  $(function(){
+    $('img').each(function(i, el){
+      var $el = $(el);
+      var src = $el.attr('src');
+      var idxof = src.indexOf('/wp-content/uploads/');
+      if(idxof > 0){
+        var imgPath = src.substring(idxof);
+        var newSrc = 'http://moodofliving.com' + imgPath;
+        $el.attr('src', newSrc);
+      }
+    });
+  })
+</script>
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-53c56d6c507ed878" async="async"></script>
 </body>
