@@ -57,11 +57,12 @@
 <script>
   var $ = jQuery;
   $(function(){
-    $('img').each(function(i, el){
+    $('img').not('.fashion img, .home-3 img, .architecture img, .beauty img').each(function(i, el){
       var $el = $(el);
       var src = $el.attr('src');
+      var logoidx = src.indexOf('mol_logo');
       var idxof = src.indexOf('/wp-content/uploads/');
-      if(idxof > 0){
+      if(idxof > 0 && logoidx === -1){
         var imgPath = src.substring(idxof);
         var newSrc = 'http://moodofliving.com' + imgPath;
         $el.attr('src', newSrc);
