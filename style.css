@@ -810,8 +810,8 @@ textarea {
 }
 .element .woocommerce ul.products li.product,
 .woocommerce-page ul.products li.product {
-    width: 46.1% !important;
-    margin-bottom: 0 !important;
+    width: 22% !important;
+    margin-bottom: 10px !important;
 }
 /* Vertically Align Images */
 
@@ -2304,6 +2304,29 @@ body.single-portfolio .rsDefault .rsArrow:hover .rsArrowIcn {
     padding: 30px 0 0 0;
     margin: 30px 0 0 0;
 }
+
+.single-portfolio #content .element {
+    padding: 0;
+    margin: 0;
+}
+
+.single-portfolio #content .find.element{
+    border-top: 0 !important;
+}
+
+.find.element .woocommerce ul{
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+}
+
+.find pre{
+  display: none;
+}
+
+.find.element .woocommerce ul{
+  border: 0;
+}
+
 .single-portfolio #main .portfolio-featured {
     height: 456px;
     overflow: hidden;
@@ -8623,18 +8646,19 @@ p.demo_store {
 /* Move Find thumbnails up next to the title */
 
 .find .articleDetail {
-    width: 30%;
+  display: inline-block;
+  vertical-align: top;
+  width: 30%;
 }
 .find .portfolio-description {
-    float: none
+
 }
+
 .single-portfolio .find .woocommerce .products ul,
 .single-portfolio .find .woocommerce ul.products,
 .single-portfolio .find .woocommerce-page .products ul,
 .single-portfolio .find .woocommerce-page ul.products {
-    clear: none !important;
-    float: right !important;
-    width: 67.5% !important;
+    width: 100%
 }
 /* Crop a container height to 160px */
 
@@ -8873,6 +8897,12 @@ div[itemprop="description"] p a {
 }
 
 @media screen and (max-width: 960px ) {
+
+
+  .find .entry-content .woocommerce{
+    width: 100%;
+  }
+
   .find .articleDetail {
       width: 100%;
   }
