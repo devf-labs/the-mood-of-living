@@ -17,8 +17,8 @@
 				
 				<a href="<?php if ( ! empty( $portfolio_custom_url ) ) echo $portfolio_custom_url; else the_permalink(); ?>" rel="bookmark">
 						
+						<?php the_post_thumbnail( 'thumbnail', array('class' => 'attachment-thumbnail post-thumbnail wp-post-image') ); ?>
 						<div class="mask"></div>
-						<?php the_post_thumbnail( 'thumbnail' ); ?>
 						
 								
 						<div class="portfolio-view-wrapper">

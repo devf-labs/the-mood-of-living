@@ -68,6 +68,21 @@
         $el.attr('src', newSrc);
       }
     });
+
+    $('.featured-post-link').each(function(i, el){
+      var $el = $(el);
+      var src = $el.css('background-image');
+      // http://localhost/mood_of_living/wp-content/uploads/2015/07/New_LAYOUT_Slider-22.jpg
+      src = src.replace('url(', '').replace(');', '').replace(')', '');
+      var idxof = src.indexOf('/wp-content/uploads/');
+
+      if(idxof > 0){
+        var imgPath = src.substring(idxof);
+        var newSrc = 'http://moodofliving.com' + imgPath;
+        $el.css('background-image', 'url('+newSrc+')');
+        // console.log($el.css('background-image'), newSrc)
+      }
+    });
   })
 </script>
 <!-- Go to www.addthis.com/dashboard to customize your tools -->

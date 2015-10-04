@@ -876,6 +876,15 @@ img.mood-board {
     width: 940px;
 }
 
+.featured-post-link{
+    width: 100%;
+    display: block;
+    /*background-color: #000;*/
+    height: 410px;
+    background-size: cover;
+    background-position: center center;
+}
+
 .element .post-thumbnail img,
 .live .post-thumbnail img {
     width: 300px;
@@ -8609,7 +8618,7 @@ p.demo_store {
 .find .post-thumbnail a {
     text-align: center;
 }
-.page-id-340 .find .post-thumbnail img {
+#home-portfolio .post-thumbnail img {
     float: none;
     text-align: center;
     margin: 0 auto;
@@ -8933,4 +8942,5 @@ div[itemprop="description"] p a {
 .content-wrapper{
   padding-top: 0 !important;
 }
+
 
