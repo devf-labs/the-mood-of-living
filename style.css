@@ -376,9 +376,9 @@ body {
     background: white;
     padding: 0;
 }
-#main {
+/*#main {
     padding: 10px 0 10px 0;
-}
+}*/
 .single-post #page {
     max-width: 960px;
     margin: 0 auto;
@@ -514,9 +514,9 @@ body.blog h1.entry-title {
 .single-post .entry-meta {
     display: block;
 }
-.search #home-portfolio-wrapper {
+/*.search #home-portfolio-wrapper {
     margin-bottom: 30px;
-}
+}*/
 .search .post-thumbnail {
     overflow: hidden;
     display: table;
@@ -876,6 +876,15 @@ img.mood-board {
     width: 940px;
 }
 
+.featured-post-link{
+    width: 100%;
+    display: block;
+    /*background-color: #000;*/
+    height: 410px;
+    background-size: cover;
+    background-position: center center;
+}
+
 .element .post-thumbnail img,
 .live .post-thumbnail img {
     width: 300px;
@@ -1152,7 +1161,7 @@ body.page-template-page-portfolio-php #primary {
     margin: 30px 0 0;
 }
 #home-portfolio-wrapper {
-    margin: 50px 0 0 0;
+    margin: 0;
 }
 
 #home-portfolio-wrapper.row, 
@@ -1207,9 +1216,8 @@ body.page-template-page-portfolio-php #primary {
 }
 
 .home-portfolio-home .col-md-4,
-.home-portfolio-home .col-sm-4,
 #home-portfolio .col-sm-4{
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .page-template-page-front-php .home-content p {
@@ -2013,7 +2021,7 @@ body.page-template-page-portfolio-php #primary {
     margin: 0;
 }
 .single-portfolio #main {
-    padding: 10px 0 0 0;
+    /*padding: 10px 0 0 0;*/
     max-width: 100%;
 }
 .single-portfolio #primary {
@@ -2301,14 +2309,14 @@ body.single-portfolio .rsDefault .rsArrow:hover .rsArrowIcn {
 
 .single-portfolio #content .element {
     border-top: 1px solid #ccc;
-    padding: 30px 0 0 0;
-    margin: 30px 0 0 0;
+    /*padding: 30px 0 0 0;*/
+    /*margin: 30px 0 0 0;*/
 }
 
-.single-portfolio #content .element {
+/*.single-portfolio #content .element {
     padding: 0;
     margin: 0;
-}
+}*/
 
 .single-portfolio #content .find.element{
     border-top: 0 !important;
@@ -2423,7 +2431,7 @@ body.single-portfolio .rsDefault .rsArrow:hover .rsArrowIcn {
 #portfolio-description p,
 #portfolio-description p em,
 #portfolio-description p strong {
-    margin: 16px 0 16px 0;
+    margin: 0px 0 16px 0;
 }
 /*///////////////////////////////// SELECTS /////////////////////////////////*/
 /* Balance margin on selected products */
@@ -2434,7 +2442,7 @@ body.single-portfolio .rsDefault .rsArrow:hover .rsArrowIcn {
 }
 .element ul.products,
 .element ul.products {
-    padding-top: 1.4em !important;
+    /*padding-top: 1.4em !important;*/
     width: 327px;
     margin: 0 -24px 0 0 !important;
 }
@@ -2447,7 +2455,7 @@ body.single-portfolio .rsDefault .rsArrow:hover .rsArrowIcn {
     font-weight: normal;
     font-style: normal;
     margin: 0px;
-    float: left;
+    /*float: left;*/
     padding-bottom: 10px;
 }
 /* Alignment */
@@ -3332,6 +3340,7 @@ object {
 .post-thumbnail a {
     display: block;
     -webkit-backface-visibility: hidden;
+    overflow: hidden;
     /* Stops the Wiggling! */
 }
 .post-thumbnail img[class*="attachment-"] {
@@ -3500,12 +3509,11 @@ a:hover .portfolio-view-wrapper {
 /*///////////////////////////////// General Styles for Meet, Find, Live Parent Pages /////////////////////////////////*/
 
 .latest-stories {
-    margin: 20px 0px;
     width: 100%;
 }
 
 .latest-stories.margin-40{
-    margin: 40px 0px;
+    margin: 30px 0px;
 }
 
 .latest-stories.margin-40 h4{
@@ -3534,9 +3542,13 @@ a:hover .portfolio-view-wrapper {
     display: block;
     height: 1px;
     position: relative;
-    top: 0.5em;
+    top: 0.4em;
     width: 100%;
     z-index: 0;
+}
+
+.latest-stories.clearfix + p{
+  display: none;
 }
 
 .greyLine {
@@ -3810,14 +3822,10 @@ a[data-datetime] {
     float: none;
 }
 .error404 #page {
-    background: #555554;
+    background: transparent;
     padding-top: 0;
 }
-.error404 #main {
-    margin: 0 auto 3.5em;
-    max-width: 960px;
-    padding: 6.5em 0 0;
-}
+
 .error404 #primary {
     width: 100%;
     margin: 0;
@@ -3856,6 +3864,11 @@ a[data-datetime] {
     margin: 0;
     font-family: "Dosis", 'Helvetica Neue', Helvetica, sans-serif;
 }
+
+.error404 .header-wrapper{
+  display: none;
+}
+
 #back {
     text-decoration: underline;
     color: #fff;
@@ -8610,12 +8623,18 @@ p.demo_store {
 .find .post-thumbnail a {
     text-align: center;
 }
-.page-id-340 .find .post-thumbnail img {
+#home-portfolio .post-thumbnail img {
     float: none;
     text-align: center;
     margin: 0 auto;
-    width: auto !important
+    width: auto;
+    max-width: none;
 }
+
+#home-portfolio .find .post-thumbnail img{
+  width: auto !important
+}
+
 .find.portfolio-featured {
     visibility: hidden;
     display: none;
@@ -8720,6 +8739,10 @@ p.demo_store {
 .woocommerce-page #content div.product div.images img {
     width: auto !important;
     max-width: 100% !important;
+}
+
+.woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
+  margin: 0 3% 2.992em 0;
 }
 /* Disable Product Meta Data ie. Category: Plaid */
 
@@ -8890,7 +8913,7 @@ div[itemprop="description"] p a {
 
 /* Classes for The Mood of Living */
 .space-content, #page{
-  margin-top: 135px !important;
+  margin-top: 130px !important;
 }
 .crp_title{
   font-size: 15px !important;
@@ -8935,3 +8958,9 @@ div[itemprop="description"] p a {
   padding-top: 0 !important;
 }
 
+
+.error404 #page {
+    margin: 0 auto 3.5em !important;
+    max-width: 960px !important;
+    padding: 6.5em 0 0 !important;
+}

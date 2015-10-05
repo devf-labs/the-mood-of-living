@@ -2472,9 +2472,23 @@ Navigation
   }
 
   #page {
-    padding-top: 80px !important;
+    margin-top: 202px !important;
+    padding-top: 30px !important;
   }
 }
+
+@media (max-width: 410px) {
+  #page {
+    margin-top: 137px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  #page {
+    margin-top: 182px !important;
+  }
+}
+
 @media only screen and (min-width: 768px) and (max-width: 992px) {
   .nav {
     width: 300px;
