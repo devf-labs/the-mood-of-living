@@ -3,8 +3,8 @@
  * The template for displaying 404 pages (Not Found).
  *
  * @package WordPress
- * @subpackage Razzo
- * @since Razzo 1.0
+ * @subpackage Lily
+ * @since Lily 1.0
  */
 
 get_header(); ?>

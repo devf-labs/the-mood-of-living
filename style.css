@@ -3339,6 +3339,7 @@ object {
 .post-thumbnail a {
     display: block;
     -webkit-backface-visibility: hidden;
+    overflow: hidden;
     /* Stops the Wiggling! */
 }
 .post-thumbnail img[class*="attachment-"] {
@@ -3822,7 +3823,6 @@ a[data-datetime] {
 .error404 #page {
     background: transparent;
     padding-top: 0;
-    mar
 }
 
 .error404 #primary {
@@ -8626,7 +8626,8 @@ p.demo_store {
     float: none;
     text-align: center;
     margin: 0 auto;
-    width: 100%
+    width: auto;
+    max-width: none;
 }
 
 #home-portfolio .find .post-thumbnail img{
@@ -8957,7 +8958,7 @@ div[itemprop="description"] p a {
 }
 
 
-#page {
+.error404 #page {
     margin: 0 auto 3.5em !important;
     max-width: 960px !important;
     padding: 6.5em 0 0 !important;
