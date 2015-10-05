@@ -8905,10 +8905,10 @@ div[itemprop="description"] p a {
 .portfolio-view-content h4 .entry-category {
     color: #fff;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 900;
     text-transform: uppercase;
     padding-bottom: 0;
-    font-family: 'AvenirBlack',Myriad Pro,sans-serif,Helvetica;
+    font-family: Georgia, Helvetica Neue,Helvetica, sans-serif;
 }
 
 /* Classes for The Mood of Living */
