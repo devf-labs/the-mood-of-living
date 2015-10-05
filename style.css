@@ -3820,14 +3820,11 @@ a[data-datetime] {
     float: none;
 }
 .error404 #page {
-    background: #555554;
+    background: transparent;
     padding-top: 0;
+    mar
 }
-.error404 #main {
-    margin: 0 auto 3.5em;
-    max-width: 960px;
-    padding: 6.5em 0 0;
-}
+
 .error404 #primary {
     width: 100%;
     margin: 0;
@@ -3866,6 +3863,11 @@ a[data-datetime] {
     margin: 0;
     font-family: "Dosis", 'Helvetica Neue', Helvetica, sans-serif;
 }
+
+.error404 .header-wrapper{
+  display: none;
+}
+
 #back {
     text-decoration: underline;
     color: #fff;
@@ -8955,3 +8957,8 @@ div[itemprop="description"] p a {
 }
 
 
+#page {
+    margin: 0 auto 3.5em !important;
+    max-width: 960px !important;
+    padding: 6.5em 0 0 !important;
+}
