@@ -17,7 +17,7 @@ get_header(); ?>
         <?php while ( have_posts() ) : the_post(); ?>
 
         <?php if ( 'portfolio' == get_post_type() ) : ?>
-          <?php get_template_part( 'single-portfolio' ); ?>
+          <?php get_template_part( 'template-parts/single-portfolio' ); ?>
         <?php else : ?>
           <?php get_template_part( 'template-parts/content', get_post_format() ); ?>
         <?php endif; // End if ( 'portfolio' == get_post_type() ) ?>
