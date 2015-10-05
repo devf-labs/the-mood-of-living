@@ -4,7 +4,7 @@ $social_accounts = ot_get_option( 'social_accounts' );
 if ( ! empty( $social_accounts[0] ) ) :
 $facebook_url = ot_get_option( 'facebook_url' );
 ?>
-	<a class="social" href="<?php echo $facebook_url; ?>" target="_blank" rel="nofollow">
+	<a class="social" style="margin-left:90px;" href="<?php echo $facebook_url; ?>" target="_blank" rel="nofollow">
 		<span class="facebook social-icon"></span>
 	</a>
 <?php endif; // end if ?>
