@@ -2308,7 +2308,7 @@ body.single-portfolio .rsDefault .rsArrow:hover .rsArrowIcn {
 /*///////////////////////////////// General Styles for Meet, Live, Find Single Portfolios /////////////////////////////////*/
 
 .single-portfolio #content .element {
-    border-top: 1px solid #ccc;
+    /*border-top: 1px solid #ccc;*/
     /*padding: 30px 0 0 0;*/
     /*margin: 30px 0 0 0;*/
 }
@@ -8963,4 +8963,10 @@ div[itemprop="description"] p a {
     margin: 0 auto 3.5em !important;
     max-width: 960px !important;
     padding: 6.5em 0 0 !important;
+}
+
+.shop-categories a{
+  color: #000;
+  display: block;
+  
 }
