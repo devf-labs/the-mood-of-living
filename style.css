@@ -810,7 +810,7 @@ textarea {
 }
 .element .woocommerce ul.products li.product,
 .woocommerce-page ul.products li.product {
-    width: 22% !important;
+    width: 45% !important;
     margin-bottom: 10px !important;
 }
 /* Vertically Align Images */
@@ -2442,8 +2442,8 @@ body.single-portfolio .rsDefault .rsArrow:hover .rsArrowIcn {
 }
 .element ul.products,
 .element ul.products {
-    /*padding-top: 1.4em !important;*/
-    width: 327px;
+    padding-top: 1.4em !important;
+    width: 100%;
     margin: 0 -24px 0 0 !important;
 }
 .element ul.products:before,
