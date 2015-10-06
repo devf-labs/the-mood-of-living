@@ -20,7 +20,7 @@ function thememove_get_color_schemes() {
         '#000',//body_text_color------------------------3
         '#111111',//heading_color--------------------------4
         '#ddbe85',//body_link_color------------------------5
-        '#666666',//body_link_hover_color------------------6
+        '#649494',//body_link_hover_color------------------6
         '#ffffff',//header_bg_color------------------------7
         '#000',//header_text_color----------------------8
         '#eeeeee',//header_border_bottom_color-------------9
@@ -34,7 +34,7 @@ function thememove_get_color_schemes() {
         '#000000',//menu_link------------------------------17
         '#649494',//menu_link_hover------------------------18
         '#ffffff',//sub_menu_bg_color----------------------19
-        '#666666',//sub_menu_link--------------------------20
+        '#649494',//sub_menu_link--------------------------20
         '#649494',//sub_menu_link_hover--------------------21
         '#649494',//sub_menu_border_bottom_&_top-----------22
         '#eeeeee',//sub_menu_border_left_&_right-----------23
