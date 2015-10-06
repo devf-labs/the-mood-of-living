@@ -8964,3 +8964,9 @@ div[itemprop="description"] p a {
     max-width: 960px !important;
     padding: 6.5em 0 0 !important;
 }
+
+.shop-categories a{
+  color: #000;
+  display: block;
+  
+}

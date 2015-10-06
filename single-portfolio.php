@@ -234,7 +234,9 @@ get_header(); ?>
 					
 					</div><!-- .portfolio-media -->
 					
-					<div class="articleDetail clearfix">		
+					<div class="articleDetail clearfix">	
+							<div>
+								
 							<?php $portfolio_meta = ot_get_option( 'portfolio_meta' ); ?>
 												
 									
@@ -250,6 +252,22 @@ get_header(); ?>
 											?>
 									
 									<p class="articleDate"><?php the_time('F j, Y') ?> | <?php the_author() ?></p>
+							</div>	
+							<?php
+							if (in_array('element find', get_post_class())){ ?>
+							<div class="shop-categories">
+								
+								<h3>Shop</h3>
+								<br />
+								<a href="/by-trend">By Trend</a>
+								<a href="/by-story">By Story</a>
+								<a href="/by-ocassion">By Ocassion</a>
+								<a href="/women">Women</a>
+								<a href="/men">Men</a>
+								<a href="/home">Home</a>
+								<a href="/art">Art</a>
+							</div>
+							<?php } ?>
 				</div>
 
 					
