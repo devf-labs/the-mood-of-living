@@ -967,7 +967,7 @@ add_action( 'admin_enqueue_scripts', 'mega_enqueue_admin_scripts' );
  function mega_enqueue_scripts() {
   // A safe way to register a JavaScript file.
 
-  wp_enqueue_style('infinity-style', THEME_ROOT . '/style.css');
+  //wp_enqueue_style('infinity-style', THEME_ROOT . '/style.css');
   wp_enqueue_style('infinity-main', THEME_ROOT . '/css/main.css');
 
   wp_register_script( 'jquery.shortcodes', get_template_directory_uri() . '/js/jquery.shortcodes.js', array( 'jquery-ui-tabs', 'jquery-ui-accordion' ) );

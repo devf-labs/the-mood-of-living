@@ -18,20 +18,20 @@ Tags: black, dark, light, two-columns, left-sidebar, fixed-layout, responsive-la
 # Elements
 # Forms
 # Navigation
-	## Links
-	## Menus
+  ## Links
+  ## Menus
 # Accessibility
 # Alignments
 # Clearings
 # Widgets
 # Content
     ## Posts and pages
-	## Asides
-	## Comments
+  ## Asides
+  ## Comments
 # Infinite scroll
 # Media
-	## Captions
-	## Galleries
+  ## Captions
+  ## Galleries
 # Combo CSS
 --------------------------------------------------------------*/
 
@@ -807,8 +807,8 @@ textarea {
     clear: none !important;
     float: right !important;
 }
-.element .woocommerce ul.products li.product,
-.woocommerce-page ul.products li.product {
+.element .woocommerce .related ul.products li.product,
+.woocommerce-page .related ul.products li.product {
     width: 45% !important;
     margin-bottom: 10px !important;
 }
@@ -7579,9 +7579,9 @@ ul.icons li [class*=" icon-"] {
 .post-type-archive-product.woocommerce-page #content ul.products {
     margin: 0 30px 0 0;
 }
-.woocommerce #content ul.products li.product,
-.woocommerce-page #content ul.products li.product {
-    width: 30.79%;
+.woocommerce #content .related ul.products li.product,
+.woocommerce-page #content .related ul.products li.product {
+    width: 30.79% !important;
 }
 .page #content ul.products li.product {
     width: 14.06%;
@@ -8414,6 +8414,11 @@ p.demo_store {
 .woocommerce-page ul.products li.product a:hover img {
     opacity: .75;
 }
+
+.woocommerce ul.products li.product{
+    margin: 0 2% 2.992em 0;
+}
+
 .woocommerce span.onsale,
 .woocommerce-page span.onsale {
     z-index: 100;
@@ -8702,14 +8707,14 @@ p.demo_store {
 .single-portfolio .find ul.products li.product .find-crop {
     height: 160px;
     overflow: hidden;
-    width: 140px;
+    width: 100%
 }
 /* Vertically Align Images */
 
 .single-portfolio .find ul.products li.product a {
     text-decoration: none;
     height: 160px;
-    width: 140px;
+    width: 100%;
     display: table-cell;
     text-align: center;
     vertical-align: middle;
@@ -8749,7 +8754,7 @@ p.demo_store {
     max-width: 100% !important;
 }
 
-.woocommerce ul.products li.product, .woocommerce-page ul.products li.product{
+.woocommerce .related ul.products li.product, .woocommerce-page ul.products li.product{
   margin: 0 3% 2.992em 0;
 }
 /* Disable Product Meta Data ie. Category: Plaid */
@@ -8811,7 +8816,7 @@ p.demo_store {
 /* Pad li image container */
 
 .single-product ul.products li.product {
-    margin-bottom: 3.8% !important;
+    margin-bottom: 2% !important;
 }
 /* Smaller Brand Overlay */
 
