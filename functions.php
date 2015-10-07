@@ -105,6 +105,163 @@ if ( ! isset( $content_width ) ) {
   $content_width = 640; /* pixels */
 }
 
+
+/**
+ * Sets up theme defaults and registers support for various WordPress features.
+ */
+function mega_setup() {
+
+  /* Make Razzo available for translation.
+   * Translations can be added to the /languages/ directory.
+   */
+  load_theme_textdomain( 'mega', get_template_directory() . '/languages' );
+
+  $locale = get_locale();
+  $locale_file = get_template_directory() . "/languages/$locale.php";
+  if ( is_readable( $locale_file ) )
+    require_once( $locale_file );
+
+  // This theme styles the visual editor with editor-style.css to match the theme style.
+  add_editor_style();
+
+  require( get_template_directory() . '/inc/widgets.php' );
+  
+  // Load up our theme shortcodes and related code.
+  require( get_template_directory() . '/inc/shortcodes.php' );
+  require( get_template_directory() . '/inc/tinymce/tinymce.php' );
+
+  // Add default posts and comments RSS feed links to <head>.
+  add_theme_support( 'automatic-feed-links' );
+
+  // This theme uses wp_nav_menu() in one location.
+  register_nav_menu( 'primary', __( 'Primary Menu', 'mega' ) );
+
+  // Add support for a variety of post formats
+  add_theme_support( 'post-formats', array( 'gallery', 'image', 'quote', 'video', 'audio' ) );
+
+  // This theme uses Featured Images (also known as post thumbnails)
+  add_theme_support( 'post-thumbnails' );
+  
+  if ( function_exists( 'add_image_size' ) ) {
+    add_image_size( 'single-post-image', 678, '', true ); // Image for Blog
+    add_image_size( 'single-portfolio-image', 959, '', true ); // Image for Single Portfolio Page
+    add_image_size( 'related-projects-image', 236, 157, true ); // Image for Related projects
+  }
+  
+  // Declare WooCommerce support
+  add_theme_support( 'woocommerce' );
+ 
+ 
+  // Sidebar
+  //remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
+  
+  // Remove Related
+  remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
+
+  // Columns
+  global $woocommerce_loop;
+  $woocommerce_loop['columns'] = 3;
+ 
+  // Display number products per page.
+  add_filter( 'loop_shop_per_page', create_function( '$cols', 'return 15;' ), 20 );
+  
+  // Disable breadcrumbs
+  remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
+  
+  remove_action(NULL, 'woocommerce_after_single_product_summary', 20 );
+
+  // Ensure cart contents update when products are added to the cart via AJAX
+  add_filter( 'add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment' );
+   
+  function woocommerce_header_add_to_cart_fragment( $fragments ) {
+    global $woocommerce;
+    
+    ob_start();
+    
+    ?>
+    <a class="cart-contents" href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><?php _e( 'Cart', 'mega' ); ?> (<?php echo $woocommerce->cart->cart_contents_count; ?>) - <?php echo $woocommerce->cart->get_cart_total(); ?></a>
+    <?php
+    
+    $fragments['a.cart-contents'] = ob_get_clean();
+    
+    return $fragments;
+    
+  }
+
+
+  
+  // Srring for add to cart messages.
+  function custom_woocommerce_add_to_cart_message( $message ) {
+    if ( get_option( 'woocommerce_cart_redirect_after_add' ) == 'yes' ) :
+      $newButtonString = 'Continue Shopping <i class="icon-circle-arrow-right"></i>';
+    else :
+      $newButtonString = 'View Shopping Cart <i class="icon-circle-arrow-right"></i>';
+    endif;
+    $replaceString = '<a$1class="button">' . $newButtonString .'</a>';
+    $message = preg_replace('#<a(.*?)class="button">(.*?)</a>#', $replaceString, $message);
+    return $message;
+  }
+  add_filter( 'woocommerce_add_to_cart_message', 'custom_woocommerce_add_to_cart_message', 999 );
+  
+
+  // Footer(remove demo store notice text)
+  remove_action( 'wp_footer', 'woocommerce_demo_store', 10 );
+  
+  
+  
+  add_filter( 'single_add_to_cart_text', 'woo_custom_cart_button_text' );
+ 
+  // Change add to cart button text
+  function woo_custom_cart_button_text() {
+        return __( 'Add to Cart', 'mega' );
+    }
+  
+  add_action( 'woocommerce_after_single_product_summary', 'woocommerce_single_navigation', 16 );
+
+
+  if ( ! function_exists( 'woocommerce_single_navigation' ) ) {
+
+  /**
+   * Next/prev navigation.
+   */
+  function woocommerce_single_navigation() {
+  ?>
+    <nav id="nav-single" class="clearfix">
+      <div class="nav-next"><?php next_post_link_plus( array(
+      
+             'tooltip' => '%title',
+             
+             'link' => 'Next Product &raquo;',
+             
+             'format' => '%link',
+                         
+                         'loop' => true,
+
+                         'in_same_cat' => true
+
+                    ) );?>
+            </div>
+            
+            <div class="nav-previous"><?php previous_post_link_plus( array(
+      
+             'tooltip' => '%title',
+             
+             'link' => '&laquo; Previous Product',
+             
+             'format' => '%link',
+             
+                         'loop' => true,
+
+                         'in_same_cat' => true,
+
+                    ) );?>
+            </div>
+    </nav><!-- #nav-single -->
+    <?php
+    }
+  }
+
+}
 /**
  * Register widget area.
  * ====================
@@ -1047,6 +1204,103 @@ if ( ! function_exists( 'custom_post_class' ) ) {
     }
 add_filter( 'post_class', 'custom_post_class', 10, 3 );
 
+
+
+/**
+ * Sets the post excerpt length to 40 words.
+ *
+ * To override this length in a child theme, remove the filter and add your own
+ * function tied to the excerpt_length filter hook.
+ */
+function mega_excerpt_length( $length ) {
+  return 40;
+}
+add_filter( 'excerpt_length', 'mega_excerpt_length' );
+
+if ( ! function_exists( 'mega_continue_reading_link' ) ) :
+/**
+ * Returns a "Continue Reading" link for excerpts
+ */
+function mega_continue_reading_link() {
+  return ' <a class="more-link" href="'. esc_url( get_permalink() ) . '">' . __( '[+]', 'mega' ) . '</a>';
+}
+endif; // mega_continue_reading_link
+
+/**
+ * Replaces "[...]" (appended to automatically generated excerpts) with an ellipsis and mega_continue_reading_link().
+ *
+ * To override this in a child theme, remove the filter and add your own
+ * function tied to the excerpt_more filter hook.
+ */
+function mega_auto_excerpt_more( $more ) {
+  return ' &hellip;' . mega_continue_reading_link();
+}
+add_filter( 'excerpt_more', 'mega_auto_excerpt_more' );
+
+/**
+ * Adds a pretty "Continue Reading" link to custom post excerpts.
+ *
+ * To override this link in a child theme, remove the filter and add your own
+ * function tied to the get_the_excerpt filter hook.
+ */
+function mega_custom_excerpt_more( $output ) {
+  if ( has_excerpt() && ! is_attachment() ) {
+    $output .= mega_continue_reading_link();
+  }
+  return $output;
+}
+//add_filter( 'get_the_excerpt', 'mega_custom_excerpt_more' );
+
+/**
+ * Remove title attribute from images.
+ */
+function wp_get_attachment_image_attributes_title_filter( $attr ) {
+  unset( $attr['title'] );
+  return $attr;
+}
+add_filter( 'wp_get_attachment_image_attributes', 'wp_get_attachment_image_attributes_title_filter' );
+
+
+
+/**
+ * Adds two classes to the array of body classes.
+ * The first is if the site has only had one author with published posts.
+ * The second is if a singular post being displayed
+ */
+function mega_body_classes( $classes ) {
+
+  if ( function_exists( 'is_multi_author' ) && ! is_multi_author() )
+    $classes[] = 'single-author';
+
+  if ( is_singular() && ! is_home() )
+    $classes[] = 'singular';
+    
+  global $is_iphone;
+  if ( $is_iphone )
+    $classes[] = 'iOS';
+
+  return $classes;
+}
+add_filter( 'body_class', 'mega_body_classes' );
+
+/**
+ * Loads a set of CSS and/or Javascript documents. 
+ */
+function mega_enqueue_admin_scripts( $hook ) {
+  wp_register_style( 'ot-admin-additional', get_template_directory_uri() . '/inc/css/ot-admin-additional.css' );
+  if ( $hook == 'appearance_page_ot-theme-options' ) {
+    wp_enqueue_style( 'ot-admin-additional' );
+  }
+
+  wp_register_script( 'jquery.admin.custom', get_template_directory_uri() . '/inc/jquery.admin.custom.js', array( 'jquery' ) );
+  if ( $hook != 'edit.php' && $hook != 'post.php' && $hook != 'post-new.php' ) 
+    return;
+  wp_enqueue_script( 'jquery.admin.custom' );
+}
+add_action( 'admin_enqueue_scripts', 'mega_enqueue_admin_scripts' );
+
+
+
 /**
  * A safe way to add/enqueue a CSS/JavaScript. 
  */
@@ -1292,6 +1546,276 @@ function mega_initialize_jquery_plugins() {
 <?php
 }
 add_action( 'wp_footer', 'mega_initialize_jquery_plugins' );
+
+
+
+/**
+ * Load up our theme meta boxes and related code.
+ */
+  require( get_template_directory() . '/inc/meta-functions.php' );
+  require( get_template_directory() . '/inc/meta-box-post.php' );
+  require( get_template_directory() . '/inc/meta-box-portfolio.php' );
+  require( get_template_directory() . '/inc/meta-box-page.php' );
+  
+/**
+ * Load up our theme style and related code.
+ */
+  require( get_template_directory() . '/inc/style.php' );
+
+/**
+ * Get Attachement ID from URL.
+ */
+function mega_get_attachment_id( $url ) {
+
+    $dir = wp_upload_dir();
+    $dir = trailingslashit($dir['baseurl']);
+
+    if( false === strpos( $url, $dir ) )
+        return false;
+
+    $file = basename($url);
+
+    $query = array(
+        'post_type' => 'attachment',
+        'fields' => 'ids',
+        'meta_query' => array(
+            array(
+                'value' => $file,
+                'compare' => 'LIKE',
+            )
+        )
+    );
+
+    $query['meta_query'][0]['key'] = '_wp_attached_file';
+    $ids = get_posts( $query );
+
+    foreach( $ids as $id )
+        if( $url == array_shift( wp_get_attachment_image_src($id, 'full') ) )
+            return $id;
+
+    $query['meta_query'][0]['key'] = '_wp_attachment_metadata';
+    $ids = get_posts( $query );
+
+    foreach( $ids as $id ) {
+
+        $meta = wp_get_attachment_metadata($id);
+
+        foreach( $meta['sizes'] as $size => $values )
+            if( $values['file'] == $file && $url == array_shift( wp_get_attachment_image_src($id, $size) ) ) {
+        return $id;
+            }
+    }
+
+    return false;
+}
+
+/**
+ * Get Vimeo & YouTube Thumbnail.
+ */
+function mega_get_video_image($url){
+  if(preg_match('/youtube/', $url)) {     
+    if(preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $url, $matches)) {
+      return "http://img.youtube.com/vi/".$matches[1]."/default.jpg";  
+    }
+  }
+  elseif(preg_match('/vimeo/', $url)) {     
+    if(preg_match('~^http://(?:www\.)?vimeo\.com/(?:clip:)?(\d+)~', $url, $matches))  {
+        $id = $matches[1];  
+        if (!function_exists('curl_init')) die('CURL is not installed!');
+        $url = "http://vimeo.com/api/v2/video/".$id.".php";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        $output = unserialize(curl_exec($ch));
+        $output = $output[0]["thumbnail_medium"]; 
+        curl_close($ch);
+        return $output;
+    }
+  }   
+}
+
+/**
+ * Retrieve YouTube/Vimeo iframe code from URL.
+ */
+function mega_get_video( $postid, $width = 940, $height = 308 ) {
+  $video_url = get_post_meta( $postid, 'mega_youtube_vimeo_url', true );  
+  if(preg_match('/youtube/', $video_url)) {     
+    if(preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $video_url, $matches)) {
+      $output = '<iframe width="'. $width .'" height="'. $height .'" src="http://www.youtube.com/embed/'.$matches[1].'?wmode=transparent&showinfo=0&rel=0" frameborder="0" allowfullscreen></iframe> ';
+    }
+    else {
+      $output = __( 'Sorry that seems to be an invalid YouTube URL.', 'mega' );
+    }     
+  }
+  elseif(preg_match('/vimeo/', $video_url)) {     
+    if(preg_match('~^https://(?:www\.)?vimeo\.com/(?:clip:)?(\d+)~', $video_url, $matches)) {       
+      $output = '<iframe src="http://player.vimeo.com/video/'. $matches[1] .'?title=0&amp;byline=0&amp;portrait=0" width="'. $width .'" height="'. $height .'" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>';          
+    }
+    else {
+      $output = __( 'Sorry that seems to be an invalid Vimeo URL.', 'mega' );
+    }     
+  }
+  else {
+    $output = __( 'Sorry that seems to be an invalid YouTube or Vimeo URL.', 'mega' );
+  } 
+  echo $output; 
+}
+
+/**
+ * Get Image Percentage Size.
+ */
+function mega_get_image_size_percentage( $width, $height ) {
+  $percent= 100;
+  $ratio =  $width / $height ;
+  
+  if ( $ratio < 0.75 ) $percent = 37.5;
+  else if ( $ratio < 0.92 ) $percent = 47;
+  else if ( $ratio < 1.17 ) $percent = 56.3;
+  else if ( $ratio < 1.42 ) $percent = 75;
+  else if ( $ratio < 1.64 ) $percent = 84.5;
+  else $percent = 100;
+    
+  return $percent;
+}
+
+/**
+ * Remove the WordPress Image Caption Extra 10px Width.
+ */
+class fixImageMargins{
+    public $xs = 0; //change this to change the amount of extra spacing
+
+    public function __construct(){
+        add_filter('img_caption_shortcode', array(&$this, 'fixme'), 10, 3);
+    }
+    public function fixme($x=null, $attr, $content){
+
+        extract(shortcode_atts(array(
+                'id'    => '',
+                'align'    => 'alignnone',
+                'width'    => '',
+                'caption' => ''
+            ), $attr));
+
+        if ( 1 > (int) $width || empty($caption) ) {
+            return $content;
+        }
+
+        if ( $id ) $id = 'id="' . $id . '" ';
+
+    return '<div ' . $id . 'class="wp-caption ' . $align . '" style="width: ' . ((int) $width + $this->xs) . 'px">'
+    . $content . '<p class="wp-caption-text">' . $caption . '</p></div>';
+    }
+}
+$fixImageMargins = new fixImageMargins();
+
+/**
+ * Filter Primary Typography Fields.
+ */
+function filter_typography_fields( $array, $field_id ) {
+  if ( $field_id == 'primary_typography' ) {
+    $array = array(
+    'font-family'
+    );
+  }
+  
+  return $array;
+}
+add_filter( 'ot_recognized_typography_fields', 'filter_typography_fields', 10, 2 );
+
+/**
+ * Filter Header Typography Fields.
+ */
+function filter_header_typography_fields( $array, $field_id ) {
+  if ( $field_id == 'header_typography' ) {
+    $array = array(
+    'font-family'
+    );
+  }
+  
+  return $array;
+}
+add_filter( 'ot_recognized_typography_fields', 'filter_header_typography_fields', 10, 2 );
+
+
+// Convert Hex Color to RGB
+function hex2rgb($hex) {
+   $hex = str_replace("#", "", $hex);
+
+   if(strlen($hex) == 3) {
+      $r = hexdec(substr($hex,0,1).substr($hex,0,1));
+      $g = hexdec(substr($hex,1,1).substr($hex,1,1));
+      $b = hexdec(substr($hex,2,1).substr($hex,2,1));
+   } else {
+      $r = hexdec(substr($hex,0,2));
+      $g = hexdec(substr($hex,2,2));
+      $b = hexdec(substr($hex,4,2));
+   }
+   $rgb = array($r, $g, $b);
+   //return implode(",", $rgb); // returns the rgb values separated by commas
+   return $rgb; // returns an array with the rgb values
+}
+
+function string_limit_words($string, $word_limit)
+{
+  $words = explode(' ', $string, ($word_limit + 1));
+  
+  if(count($words) > $word_limit) {
+    array_pop($words);
+  }
+  
+  return implode(' ', $words);
+}
+
+/**
+ * Enqueue the Droid Sans font.
+ */
+function custom_fonts() {
+  $protocol = is_ssl() ? 'https' : 'http';
+  wp_enqueue_style( 'mytheme-droidsans', "$protocol://fonts.googleapis.com/css?family=Dosis:400,700' rel='stylesheet' type='text/css" );}
+add_action( 'wp_enqueue_scripts', 'custom_fonts' ); 
+
+// Function which shows Font AvenirBlack in the toolbar on the Tiny MCE editor
+function myformatTinyMCE($in)
+{
+$in['theme_advanced_fonts']='AvenirBlack=AvenirBlack' ;
+return $in;
+}
+add_filter('tiny_mce_before_init', 'myformatTinyMCE' );
+
+
+//  Removestupid p tags around images
+function filter_ptags_on_images($content){
+   return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
+}
+
+add_filter('the_content', 'filter_ptags_on_images');
+
+//Add filter to remove reviews site-wide 
+add_filter( 'woocommerce_product_tabs', 'sb_woo_remove_reviews_tab', 98);
+function sb_woo_remove_reviews_tab($tabs) {
+
+ unset($tabs['reviews']);
+
+ return $tabs;
+}
+
+//parse PHP in a widget
+
+add_filter('widget_text', 'php_text', 99);
+
+function php_text($text) {
+ if (strpos($text, '<' . '?') !== false) {
+ ob_start();
+ eval('?' . '>' . $text);
+ $text = ob_get_contents();
+ ob_end_clean();
+ }
+ return $text;
+}
+add_filter( 'widget_text', 'do_shortcode' );
+
 
 
 // ADD CUSTOM POST TYPES TO RSS FEED //

@@ -9,9 +9,9 @@
 
 get_header(); ?>
 
-  <div id="main" class="clearfix">
+  <div id="main" class="clearfix row">
 
-    <div id="primary">
+    <div id="primary" class="col-md-9">
       <div id="content" role="main">
 
         <?php while ( have_posts() ) : the_post(); ?>

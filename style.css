@@ -7613,9 +7613,9 @@ ul.icons li [class*=" icon-"] {
 .woocommerce-page #content .woocommerce-ordering select {
     margin: 0;
 }
-.woocommerce-breadcrumb {
+/*.woocommerce-breadcrumb {
     float: left;
-}
+}*/
 .woocommerce #searchform {
     position: relative;
 }
@@ -8611,6 +8611,14 @@ p.demo_store {
 #content .cart-collaterals ul.products li.product {
     width: 37.06%;
 }
+
+.woocommerce #content div.product div.images, 
+.woocommerce div.product div.images, 
+.woocommerce-page #content div.product div.images, 
+.woocommerce-page div.product div.images{
+  float: none;
+  width: auto;
+}
 /*///////////////////////////////// FIND Parent Page Styles /////////////////////////////////*/
 /* Adjust Height to be the same */
 
@@ -8722,15 +8730,6 @@ p.demo_store {
 /*///////////////////////////////// FIND Single Product Page Styles /////////////////////////////////*/
 /*Add height so nav is same position for all */
 
-.single-product.woocommerce #content {
-    height: 550px;
-}
-.woocommerce div.product,
-.woocommerce #content div.product,
-.woocommerce-page div.product,
-.woocommerce-page #content div.product {
-    height: 550px;
-}
 /* Make product image natural size */
 
 .woocommerce div.product div.images img,
@@ -8751,12 +8750,7 @@ p.demo_store {
 }
 /* Aligning Product Title with Top Nav */
 
-.single-product div.product div.summary,
-.single-product #content div.product div.summary,
-.single-product div.product div.summary,
-.single-product #content div.product div.summary {
-    width: 41.25% !important;
-}
+
 /* Style next/prev project nav */
 
 .single-product #content #nav-single {
@@ -8819,16 +8813,7 @@ p.demo_store {
 div[itemprop="description"] p a {
     font-style: italic;
 }
-/* Vertically Centering Product Images */
 
-.product .images {
-    position: absolute;
-    top: 50%;
-    left: 25%;
-    -webkit-transform: translate(-50%, -55%);
-    transform: translate(-50%, -55%);
-    margin-bottom: 0 !important;
-}
 /*///////////////////////////////// Correct Social Commenting Plugin (by Crowd Favorite) Styles /////////////////////////////////*/
 
 #social {
