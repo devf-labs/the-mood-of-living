@@ -21,7 +21,7 @@ get_header(); ?>
 
 				<div class="latest-stories margin-40 clearfix">
 					<div class="before"></div>
-					<h4>Mood of Living: A quality of Lifestyle Magazine and Global Marketplace</h4>
+					<h4>A quality of Lifestyle Magazine and Global Marketplace</h4>
 				</div>
 				
 				<?php $enable_home_banners_shop = ot_get_option( 'enable_home_banners_shop' ); ?>
