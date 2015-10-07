@@ -137,7 +137,7 @@ if ( ! isset( $content_width ) ) {
   $content_width = 640; /* pixels */
 }
 
-
+add_action( 'after_setup_theme', 'mega_setup' );
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  */
@@ -190,6 +190,7 @@ function mega_setup() {
   // Remove Related
   remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
 
+
   // Columns
   global $woocommerce_loop;
   $woocommerce_loop['columns'] = 3;
@@ -200,8 +201,6 @@ function mega_setup() {
   // Disable breadcrumbs
   remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 );
   
-  remove_action(NULL, 'woocommerce_after_single_product_summary', 20 );
-
   // Ensure cart contents update when products are added to the cart via AJAX
   add_filter( 'add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment' );
    
@@ -1865,4 +1864,10 @@ function add_cpts_to_rss_feed( $args ) {
   return $args;
 }
 add_filter( 'request', 'add_cpts_to_rss_feed' );
+
+function wpa_115808(){
+   remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+   add_action( 'woocommerce_after_single_product', 'woocommerce_output_related_products' );
+}
+add_action( 'woocommerce_before_main_content', 'wpa_115808' );
 ?>

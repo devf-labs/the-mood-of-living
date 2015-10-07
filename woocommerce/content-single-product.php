@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
      *
      * @hooked wc_print_notices - 10
      */
-     do_action( 'woocommerce_before_single_product' );
+     //do_action( 'woocommerce_before_single_product' );
 
      if ( post_password_required() ) {
         echo get_the_password_form();
@@ -78,5 +78,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <meta itemprop="url" content="<?php the_permalink(); ?>" />
     </div>
 </div><!-- #product-<?php the_ID(); ?> -->
-
-<?php do_action( 'woocommerce_after_single_product' ); ?>
+</div>
+<div id="secondary">
+    <?php do_action( 'woocommerce_after_single_product' ); ?>
+</div>

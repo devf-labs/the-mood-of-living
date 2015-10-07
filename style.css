@@ -7552,9 +7552,7 @@ ul.icons li [class*=" icon-"] {
 /* =WooCommerce ----------------------------------------------- */
 
 .woocommerce #container {
-    float: left;
-    width: 708px;
-    border-right: 1px solid #cfcfcf;
+    width: 100%;
 }
 .woocommerce .entry-header {
     padding: 0 30px 30px 0;
@@ -8169,8 +8167,15 @@ p.demo_store {
     box-shadow: none !important;
 }
 .single-product.woocommerce #content {
-    padding: 30px 30px 0 0;
+    padding: 0 30px 0 0;
+    border: 0;
+    width: 100%;
 }
+
+.single-product.woocommerce #primary{
+  border-right: 1px solid #cfcfcf;
+}
+
 .related h2,
 .panel h2 {
     display: none !important
@@ -8431,7 +8436,7 @@ p.demo_store {
 }
 
 .single-product-row{
-  margin-top: 30px;
+ /* margin-top: 30px;*/
 }
 
 .woocommerce #content .cart-collaterals .shipping_calculator .button,
@@ -8762,7 +8767,7 @@ p.demo_store {
     margin: 0;
     width: 92%;
     position: absolute;
-    bottom: 0px;
+    bottom: -20px;
 }
 .single-product #nav-single .nav-previous a,
 .single-product #nav-single .nav-next a,
