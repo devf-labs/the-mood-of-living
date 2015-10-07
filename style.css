@@ -8650,6 +8650,7 @@ p.demo_store {
     text-align: center;
     margin: 0 auto;
     width: auto;
+    display: block;
     max-width: none;
 }
 
