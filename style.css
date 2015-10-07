@@ -246,8 +246,7 @@ Tags: black, dark, light, two-columns, left-sidebar, fixed-layout, responsive-la
   display: inline;
 }
 .page-content,
-.entry-content,
-.entry-summary {
+.entry-content{
   margin: 1.5em 0 0;
 }
 .page-links {
@@ -8430,6 +8429,11 @@ p.demo_store {
 .single-product .images .onsale {
     display: none;
 }
+
+.single-product-row{
+  margin-top: 30px;
+}
+
 .woocommerce #content .cart-collaterals .shipping_calculator .button,
 .woocommerce-page #content .cart-collaterals .shipping_calculator .button {
     margin: 0 0 16px;
