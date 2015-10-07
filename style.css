@@ -2335,7 +2335,7 @@ body.single-portfolio .rsDefault .rsArrow:hover .rsArrowIcn {
 }
 
 .single-portfolio #main .portfolio-featured {
-    height: 456px;
+    /*height: 456px;*/
     overflow: hidden;
 }
 .portfolio-featured img {
