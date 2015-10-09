@@ -2443,11 +2443,9 @@ body.single-portfolio .rsDefault .rsArrow:hover .rsArrowIcn {
 .element ul.products {
     padding-top: 1.4em !important;
     width: 100%;
-    margin: 0 -24px 0 0 !important;
 }
 .element ul.products:before,
 .element ul.products:before {
-    content: "Shop the Story";
     font-size: 19px;
     line-height: 1;
     font-family: Playfair Display;
@@ -7582,6 +7580,10 @@ ul.icons li [class*=" icon-"] {
 .woocommerce #content .related ul.products li.product,
 .woocommerce-page #content .related ul.products li.product {
     width: 30.79% !important;
+}
+
+ul.products li.col-md-3{
+  max-width: none;
 }
 .page #content ul.products li.product {
     width: 14.06%;

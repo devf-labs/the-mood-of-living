@@ -53,10 +53,10 @@
 <?php } ?>
 
 <?php wp_footer(); ?>
-
 <script>
   var $ = jQuery;
   $(function(){
+    $(".products").eq(1).find('h3').text("Other Products you might like");
     $('img').not('.fashion img, .home-3 img, .architecture img, .beauty img').each(function(i, el){
       var $el = $(el);
       var src = $el.attr('src');
