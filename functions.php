@@ -998,6 +998,7 @@ add_action( 'admin_enqueue_scripts', 'mega_enqueue_admin_scripts' );
 
   if ( ! is_404() ) {
     
+    wp_enqueue_script( 'thememove-js-main', THEME_ROOT . '/js/main.js', array( 'jquery' ), null, true );
     wp_enqueue_script( 'jquery.fancybox.pack' );
     $portfolio_present = get_posts( array( 'post_type' => 'portfolio', 'posts_per_page' => -1 ) );
     if ( is_page_template( 'page-portfolio.php' ) && $portfolio_present ) :
