@@ -3491,6 +3491,7 @@ a:hover .portfolio-view-wrapper {
     font-weight: normal;
     line-height: 30px;
     margin: 0;
+    font-weight: bold;
 }
 .post-thumbnail hr {
     background-color: #777;
@@ -8920,6 +8921,7 @@ div[itemprop="description"] p a {
 .crp_title{
   font-size: 15px !important;
   font-weight: 500;
+  color: #ddbe85;
 }
 
 @media screen and (max-width: 960px ) {
