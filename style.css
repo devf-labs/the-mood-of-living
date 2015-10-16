@@ -972,7 +972,7 @@ body.page-template-page-portfolio-php #primary {
 }
 .entry-category {
     color: #111;
-    font-family: "Dosis", 'Helvetica Neue', Helvetica, sans-serif;
+    font-family: 'AvenirBlack', Myriad Pro, sans-serif, Helvetica;
     text-transform: uppercase;
 }
 .entry-category .sep {
@@ -3491,6 +3491,7 @@ a:hover .portfolio-view-wrapper {
     font-weight: normal;
     line-height: 30px;
     margin: 0;
+    font-weight: bold;
 }
 .post-thumbnail hr {
     background-color: #777;
@@ -8910,7 +8911,7 @@ div[itemprop="description"] p a {
     font-weight: 900;
     text-transform: uppercase;
     padding-bottom: 0;
-    font-family: Georgia, Helvetica Neue,Helvetica, sans-serif;
+    font-family: 'AvenirBlack', Myriad Pro, sans-serif, Helvetica
 }
 
 /* Classes for The Mood of Living */
@@ -8920,6 +8921,7 @@ div[itemprop="description"] p a {
 .crp_title{
   font-size: 15px !important;
   font-weight: 500;
+  color: #ddbe85;
 }
 
 @media screen and (max-width: 960px ) {
@@ -8970,5 +8972,9 @@ div[itemprop="description"] p a {
 .shop-categories a{
   color: #000;
   display: block;
-  
+}
+
+.quoteTexts span:nth-child(n+2){
+  font-family: 'AvenirBlack',Myriad Pro,sans-serif,Helvetica;
+  font-style: normal;
 }
