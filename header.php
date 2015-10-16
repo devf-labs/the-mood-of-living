@@ -36,7 +36,7 @@
           <?php }else{ ?>
             <?php if(get_theme_mod( 'logo_image', logo_image)){ ?>
               <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-                <img src="<?php echo get_theme_mod('logo_image',logo_image); ?>" alt="logo"/>
+                <img src="<?php echo get_theme_mod('logo_image',logo_image); ?>" alt="logo" style="max-height:70px;"/>
               </a>
             <?php }else{ ?>
               <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
