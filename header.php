@@ -31,7 +31,7 @@
           global $infinity_custom_logo;
           if($infinity_custom_logo){ ?>
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-              <img src="<?php echo esc_url($infinity_custom_logo); ?>" alt="logo"/>
+              <img src="<?php echo esc_url($infinity_custom_logo); ?>" alt="logo" style="max-height:70px;"/>
             </a>
           <?php }else{ ?>
             <?php if(get_theme_mod( 'logo_image', logo_image)){ ?>
