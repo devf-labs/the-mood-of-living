@@ -8977,4 +8977,7 @@ div[itemprop="description"] p a {
 .quoteTexts span:nth-child(n+2){
   font-family: 'AvenirBlack',Myriad Pro,sans-serif,Helvetica;
   font-style: normal;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
 }
