@@ -2305,6 +2305,7 @@ Navigation
 }
 .nav .sub-menu li a {
   display: block;
+  text-transform: uppercase;
 }
 .nav .sub-menu li .post-simple-layout .post .entry-title {
   margin-top: 15px;
@@ -2591,7 +2592,8 @@ Navigation
     visibility: hidden;
     opacity: 0;
     position: absolute;
-    left: 0;
+    margin-left: -125px;
+    top: 100%;
     top: 100%;
     width: 250px;
     border: 1px solid transparent;
