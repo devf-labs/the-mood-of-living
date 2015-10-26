@@ -8986,3 +8986,7 @@ div[itemprop="description"] p a {
   font-weight: 900;
   text-transform: uppercase;
 }
+
+.single-portfolio .find .products h3 {
+    display: none;
+}
