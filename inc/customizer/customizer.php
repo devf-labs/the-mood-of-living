@@ -13,7 +13,7 @@ function thememove_configuration_customizer() {
 
   $args = array(
 //    'logo_image'   => 'http://lily.thememove.com/data/images/logo.png',
-    'color_accent' => '#ddbe85',
+    'color_accent' => '#649494',
     'color_back'   => '#ffffff',
     'stylesheet_id'  => 'infinity-style-css',
     'description' => __('The Customizer allows you to preview changes to your site before publishing them. You can also navigate to different pages on your site to preview them.', 'kirki'),

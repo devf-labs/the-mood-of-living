@@ -70,7 +70,7 @@ Tags: black, dark, light, two-columns, left-sidebar, fixed-layout, responsive-la
   color: #111 !important;
 }
 .main-navigation a:hover {
-    color: #ddbe85 !important;
+    color: #649494 !important;
 }
 .main-navigation ul ul {
   float: left;
@@ -4069,7 +4069,7 @@ a[data-datetime] {
 .widget a:hover,
 .widget a:focus,
 .widget a:active {
-    color: #ddbe85 !important;
+    color: #649494 !important;
 }
 .widget img {
     margin: 0.3em 0 0 0;
@@ -8926,7 +8926,7 @@ div[itemprop="description"] p a {
 .crp_title{
   font-size: 15px !important;
   font-weight: 500;
-  color: #ddbe85;
+  color: #649494;
 }
 
 @media screen and (max-width: 960px ) {

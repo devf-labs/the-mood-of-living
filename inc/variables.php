@@ -19,7 +19,7 @@ function thememove_get_color_schemes() {
         '#ffffff',//body_bg_color--------------------------2
         '#000',//body_text_color------------------------3
         '#111111',//heading_color--------------------------4
-        '#ddbe85',//body_link_color------------------------5
+        '#649494',//body_link_color------------------------5
         '#649494',//body_link_hover_color------------------6
         '#ffffff',//header_bg_color------------------------7
         '#000',//header_text_color----------------------8
